@@ -1,0 +1,50 @@
+{
+  "name": "LOOKYAH Jamaica",
+  "short_name": "LOOKYAH",
+  "description": "It's here. Just look - Book authentic Jamaica experiences",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#d8e4fa",
+  "theme_color": "#eecc8f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["travel", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Discover",
+      "url": "/",
+      "description": "Browse experiences"
+    },
+    {
+      "name": "Chat with JAHBOI",
+      "url": "/chat",
+      "description": "Get help from JAHBOI"
+    },
+    {
+      "name": "My Trips",
+      "url": "/trips",
+      "description": "View your bookings"
+    }
+  ]
+}

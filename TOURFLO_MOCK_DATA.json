@@ -1,0 +1,1649 @@
+{
+  "experiences": [
+    {
+      "id": "exp_001",
+      "operatorId": "op_001",
+      "title": "Half Day Deep Sea Fishing Adventure",
+      "category": "fishing_charter",
+      "vibe": ["adventure", "local_experience", "expert_guide"],
+      "description": "Target mahi-mahi, sailfish, and kingfish on our 38-foot custom sportfisher. Our USCG-licensed captain has 20+ years experience fishing the Gulf Stream. All gear, bait, and licenses included.",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Hurricane Hole Marina, 5130 Overseas Hwy",
+        "coordinates": [24.5657, -81.7648]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 650,
+        "minGroup": 1,
+        "maxGroup": 6
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["6:00 AM", "11:00 AM"]
+      },
+      "includes": ["All fishing gear", "Bait & tackle", "Fishing license", "Ice & cooler", "Fish cleaning"],
+      "requirements": ["Minimum age 8 years", "Moderate fitness level", "Sea sickness medication recommended"],
+      "images": ["https://images.pexels.com/photos/1423564/pexels-photo-1423564.jpeg", "https://images.pexels.com/photos/6048594/pexels-photo-6048594.jpeg"],
+      "rating": 4.9,
+      "reviews": 287,
+      "operatorName": "Captain Jack's Charters"
+    },
+    {
+      "id": "exp_002",
+      "operatorId": "op_001",
+      "title": "Full Day Offshore Fishing Expedition",
+      "category": "fishing_charter",
+      "vibe": ["adventure", "trophy_hunting", "expert_guide"],
+      "description": "Go after the big ones! Full day offshore targeting marlin, tuna, and wahoo. Venture 20-40 miles offshore into prime fishing grounds. Includes lunch and beverages.",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Hurricane Hole Marina, 5130 Overseas Hwy",
+        "coordinates": [24.5657, -81.7648]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 1200,
+        "minGroup": 1,
+        "maxGroup": 6
+      },
+      "duration": "8 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (weather dependent)",
+        "times": ["5:30 AM"]
+      },
+      "includes": ["All fishing gear", "Bait & tackle", "Fishing license", "Lunch & drinks", "Fish cleaning & packaging"],
+      "requirements": ["Minimum age 12 years", "Good physical condition", "Sunscreen and hat recommended"],
+      "images": ["https://images.pexels.com/photos/8078268/pexels-photo-8078268.jpeg", "https://images.pexels.com/photos/3731214/pexels-photo-3731214.jpeg"],
+      "rating": 4.8,
+      "reviews": 192,
+      "operatorName": "Captain Jack's Charters"
+    },
+    {
+      "id": "exp_003",
+      "operatorId": "op_002",
+      "title": "Islamorada Backcountry Flats Fishing",
+      "category": "fishing_charter",
+      "vibe": ["adventure", "relaxing", "local_experience"],
+      "description": "Fish the shallow flats for bonefish, tarpon, and permit with our expert fly fishing guide. Perfect for beginners and experienced anglers. Poling through crystal-clear waters in search of trophy fish.",
+      "location": {
+        "city": "Islamorada",
+        "county": "Monroe",
+        "address": "Bud N' Mary's Marina, 79851 Overseas Hwy",
+        "coordinates": [24.9258, -80.6278]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 500,
+        "minGroup": 1,
+        "maxGroup": 2
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["7:00 AM", "1:00 PM"]
+      },
+      "includes": ["Fly fishing gear", "Flies & leaders", "Fishing license", "Bottled water", "Photo opportunities"],
+      "requirements": ["Minimum age 10 years", "Polarized sunglasses required", "Catch & release only"],
+      "images": ["https://images.pexels.com/photos/4666756/pexels-photo-4666756.jpeg", "https://images.pexels.com/photos/1686979/pexels-photo-1686979.jpeg"],
+      "rating": 4.9,
+      "reviews": 143,
+      "operatorName": "Keys Flats Fishing"
+    },
+    {
+      "id": "exp_004",
+      "operatorId": "op_003",
+      "title": "Miami Sunset Cruise on Biscayne Bay",
+      "category": "boat_tour",
+      "vibe": ["chill", "romantic", "scenic"],
+      "description": "Experience Miami's stunning skyline as the sun sets over Biscayne Bay. Cruise past Star Island, Fisher Island, and the Venetian Islands. Complimentary champagne and light appetizers included.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Bayside Marketplace Marina, 401 Biscayne Blvd",
+        "coordinates": [25.7780, -80.1863]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 85,
+        "minGroup": 2,
+        "maxGroup": 45
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["6:00 PM", "7:30 PM"]
+      },
+      "includes": ["Champagne toast", "Light appetizers", "Cash bar available", "Live narration", "Photo opportunities"],
+      "requirements": ["All ages welcome", "Wheelchair accessible", "Covered seating available"],
+      "images": ["https://images.pexels.com/photos/1118874/pexels-photo-1118874.jpeg", "https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg"],
+      "rating": 4.7,
+      "reviews": 456,
+      "operatorName": "Biscayne Bay Cruises"
+    },
+    {
+      "id": "exp_005",
+      "operatorId": "op_003",
+      "title": "Celebrity Homes & Millionaire's Row Cruise",
+      "category": "boat_tour",
+      "vibe": ["scenic", "luxury", "instagram_worthy"],
+      "description": "See how Miami's rich and famous live! Cruise past the waterfront mansions of celebrities, athletes, and business moguls on Star Island, Hibiscus Island, and Palm Island.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Bayside Marketplace Marina, 401 Biscayne Blvd",
+        "coordinates": [25.7780, -80.1863]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 65,
+        "minGroup": 1,
+        "maxGroup": 45
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["11:00 AM", "1:00 PM", "3:00 PM"]
+      },
+      "includes": ["Expert narration", "Air-conditioned cabin", "Restroom facilities", "Beverages for purchase"],
+      "requirements": ["All ages welcome", "Stroller accessible", "Cameras recommended"],
+      "images": ["https://images.pexels.com/photos/2869499/pexels-photo-2869499.jpeg", "https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg"],
+      "rating": 4.6,
+      "reviews": 389,
+      "operatorName": "Biscayne Bay Cruises"
+    },
+    {
+      "id": "exp_006",
+      "operatorId": "op_004",
+      "title": "Key West Snorkeling Adventure",
+      "category": "boat_tour",
+      "vibe": ["adventure", "family_friendly", "wildlife"],
+      "description": "Explore America's only living coral reef! Snorkel two pristine locations in the Florida Keys National Marine Sanctuary. Spot tropical fish, sea turtles, and vibrant coral formations.",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Historic Seaport, 201 William St",
+        "coordinates": [24.5558, -81.8039]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 95,
+        "minGroup": 1,
+        "maxGroup": 40
+      },
+      "duration": "3.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "1:30 PM"]
+      },
+      "includes": ["Snorkel gear", "Snorkel instruction", "Marine life guide", "Snacks & drinks", "Underwater photos available"],
+      "requirements": ["Minimum age 6 years", "Basic swimming ability", "Wetsuit rentals available"],
+      "images": ["https://images.pexels.com/photos/2224861/pexels-photo-2224861.jpeg", "https://images.pexels.com/photos/2404370/pexels-photo-2404370.jpeg"],
+      "rating": 4.8,
+      "reviews": 521,
+      "operatorName": "Reef Explorer Tours"
+    },
+    {
+      "id": "exp_007",
+      "operatorId": "op_005",
+      "title": "Fort Lauderdale Party Boat Cruise",
+      "category": "boat_tour",
+      "vibe": ["party", "group_activity", "social"],
+      "description": "The ultimate party on the water! DJ spinning hits, open bar, and dancing under the stars. Cruise the Intracoastal Waterway and see Fort Lauderdale's yachts and mansions.",
+      "location": {
+        "city": "Fort Lauderdale",
+        "county": "Broward",
+        "address": "Riverwalk Marina, 1 SW 2nd Ave",
+        "coordinates": [26.1224, -80.1434]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 75,
+        "minGroup": 1,
+        "maxGroup": 100
+      },
+      "duration": "3 hours",
+      "availability": {
+        "daysOfWeek": ["Fri", "Sat"],
+        "seasons": "Year-round",
+        "times": ["9:00 PM"]
+      },
+      "includes": ["2-hour open bar", "DJ entertainment", "Dance floor", "Climate-controlled cabin", "Security staff"],
+      "requirements": ["Must be 21+ years old", "Valid ID required", "Appropriate attire"],
+      "images": ["https://images.pexels.com/photos/1267696/pexels-photo-1267696.jpeg", "https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg"],
+      "rating": 4.5,
+      "reviews": 234,
+      "operatorName": "FTL Party Cruises"
+    },
+    {
+      "id": "exp_008",
+      "operatorId": "op_006",
+      "title": "Jet Ski Tour of Miami Coastline",
+      "category": "water_sports",
+      "vibe": ["adventure", "adrenaline", "beach_vibes"],
+      "description": "Ride your own jet ski along Miami's stunning coastline! Cruise past South Beach, see celebrity homes, and feel the thrill of riding across Biscayne Bay. No experience necessary.",
+      "location": {
+        "city": "Miami Beach",
+        "county": "Miami-Dade",
+        "address": "Miami Beach Marina, 300 Alton Rd",
+        "coordinates": [25.7709, -80.1394]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 180,
+        "minGroup": 1,
+        "maxGroup": 8
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "11:30 AM", "2:00 PM", "4:30 PM"]
+      },
+      "includes": ["Jet ski rental", "Life jacket", "Safety briefing", "Guide escort", "GoPro footage available"],
+      "requirements": ["Minimum age 18 to drive (16 with guardian)", "Valid driver's license", "Swim attire"],
+      "images": ["https://images.pexels.com/photos/163933/dubai-jet-ski-marine-sports-sea-163933.jpeg", "https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg"],
+      "rating": 4.8,
+      "reviews": 412,
+      "operatorName": "Miami Water Sports"
+    },
+    {
+      "id": "exp_009",
+      "operatorId": "op_006",
+      "title": "Parasailing Over South Beach",
+      "category": "water_sports",
+      "vibe": ["adventure", "adrenaline", "scenic"],
+      "description": "Soar 300 feet above Miami Beach for breathtaking aerial views of the Atlantic Ocean, South Beach, and the Miami skyline. Safe, thrilling, and unforgettable!",
+      "location": {
+        "city": "Miami Beach",
+        "county": "Miami-Dade",
+        "address": "South Pointe Park Marina, 1 Washington Ave",
+        "coordinates": [25.7617, -80.1393]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 120,
+        "minGroup": 1,
+        "maxGroup": 3
+      },
+      "duration": "75 minutes (10 min flight)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (weather dependent)",
+        "times": ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "5:00 PM"]
+      },
+      "includes": ["All safety equipment", "Professional instruction", "Boat ride", "Photo packages available"],
+      "requirements": ["Minimum age 6 years (with adult)", "Weight limit 450 lbs combined", "No pregnant guests"],
+      "images": ["https://images.pexels.com/photos/1430672/pexels-photo-1430672.jpeg", "https://images.pexels.com/photos/5737900/pexels-photo-5737900.jpeg"],
+      "rating": 4.7,
+      "reviews": 328,
+      "operatorName": "Miami Water Sports"
+    },
+    {
+      "id": "exp_010",
+      "operatorId": "op_007",
+      "title": "Destin Kayak Dolphin Encounter",
+      "category": "water_sports",
+      "vibe": ["adventure", "family_friendly", "wildlife"],
+      "description": "Paddle through Destin's calm waters and get up close with wild dolphins! This guided kayak tour takes you to prime dolphin habitat in Choctawhatchee Bay.",
+      "location": {
+        "city": "Destin",
+        "county": "Okaloosa",
+        "address": "Harbor Boardwalk, 10 Harbor Blvd",
+        "coordinates": [30.3935, -86.4958]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 75,
+        "minGroup": 1,
+        "maxGroup": 12
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["8:00 AM", "10:30 AM", "4:00 PM"]
+      },
+      "includes": ["Kayak & paddle", "Life jacket", "Dry bag", "Naturalist guide", "Dolphin sighting guarantee"],
+      "requirements": ["Minimum age 5 years", "Basic swimming ability", "Sunscreen recommended"],
+      "images": ["https://images.pexels.com/photos/1906779/pexels-photo-1906779.jpeg", "https://images.pexels.com/photos/2249598/pexels-photo-2249598.jpeg"],
+      "rating": 4.9,
+      "reviews": 267,
+      "operatorName": "Emerald Coast Kayak"
+    },
+    {
+      "id": "exp_011",
+      "operatorId": "op_008",
+      "title": "Everglades Airboat Safari",
+      "category": "airboat_tour",
+      "vibe": ["adventure", "wildlife", "thrilling"],
+      "description": "Blast through the sawgrass marshes at 40 mph! See wild alligators, wading birds, and the unique Everglades ecosystem. Includes live alligator show and wildlife presentation.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Everglades Safari Park, 26700 SW 8th St",
+        "coordinates": [25.7639, -80.5858]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 45,
+        "minGroup": 1,
+        "maxGroup": 30
+      },
+      "duration": "60 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "10:30 AM", "12:00 PM", "1:30 PM", "3:00 PM", "4:30 PM"]
+      },
+      "includes": ["30-min airboat ride", "Alligator show", "Wildlife exhibits", "Ear protection", "Parking"],
+      "requirements": ["All ages welcome", "Infants free (on lap)", "Bring camera"],
+      "images": ["https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg", "https://images.pexels.com/photos/4666757/pexels-photo-4666757.jpeg"],
+      "rating": 4.6,
+      "reviews": 892,
+      "operatorName": "Everglades Safari Park"
+    },
+    {
+      "id": "exp_012",
+      "operatorId": "op_009",
+      "title": "Private Everglades Night Airboat Tour",
+      "category": "airboat_tour",
+      "vibe": ["adventure", "unique", "wildlife"],
+      "description": "Experience the Everglades after dark! Spot nocturnal wildlife including alligators, raccoons, and owls. Our spotlight reveals eyes glowing in the darkness - an unforgettable adventure.",
+      "location": {
+        "city": "Homestead",
+        "county": "Miami-Dade",
+        "address": "Wild Lime Adventures, 35601 SW 192nd Ave",
+        "coordinates": [25.4539, -80.5119]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 95,
+        "minGroup": 2,
+        "maxGroup": 6
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Thu", "Fri", "Sat"],
+        "seasons": "Year-round",
+        "times": ["7:30 PM", "9:00 PM"]
+      },
+      "includes": ["Private airboat", "Spotlight equipment", "Wildlife expert guide", "Insect repellent", "Snacks & water"],
+      "requirements": ["Minimum age 8 years", "Closed-toe shoes", "Long pants recommended"],
+      "images": ["https://images.pexels.com/photos/5945876/pexels-photo-5945876.jpeg", "https://images.pexels.com/photos/7232404/pexels-photo-7232404.jpeg"],
+      "rating": 4.9,
+      "reviews": 78,
+      "operatorName": "Wild Lime Adventures"
+    },
+    {
+      "id": "exp_013",
+      "operatorId": "op_010",
+      "title": "Crystal River Manatee Snorkel Tour",
+      "category": "eco_tour",
+      "vibe": ["educational", "wildlife", "family_friendly"],
+      "description": "Swim with gentle giants! Crystal River is the only place in North America where you can legally swim with wild manatees. Our expert guides ensure respectful wildlife encounters.",
+      "location": {
+        "city": "Crystal River",
+        "county": "Citrus",
+        "address": "Manatee Tour & Dive, 925 N Citrus Ave",
+        "coordinates": [28.9056, -82.5962]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 85,
+        "minGroup": 1,
+        "maxGroup": 6
+      },
+      "duration": "3 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "November-March (peak season)",
+        "times": ["6:00 AM", "9:00 AM", "12:00 PM"]
+      },
+      "includes": ["Wetsuit", "Snorkel gear", "Hot chocolate", "Towels", "Professional photos"],
+      "requirements": ["Minimum age 5 years", "Basic swimming", "No touching manatees"],
+      "images": ["https://images.pexels.com/photos/3720862/pexels-photo-3720862.jpeg", "https://images.pexels.com/photos/4666774/pexels-photo-4666774.jpeg"],
+      "rating": 4.9,
+      "reviews": 634,
+      "operatorName": "Crystal River Manatee Tours"
+    },
+    {
+      "id": "exp_014",
+      "operatorId": "op_011",
+      "title": "Key Largo Mangrove Kayak Eco-Tour",
+      "category": "eco_tour",
+      "vibe": ["educational", "relaxing", "scenic"],
+      "description": "Explore the unique mangrove ecosystem of the Florida Keys. Paddle through tunnels of mangrove trees, spot juvenile fish, birds, and learn about this vital habitat from our naturalist guide.",
+      "location": {
+        "city": "Key Largo",
+        "county": "Monroe",
+        "address": "John Pennekamp State Park, 102601 Overseas Hwy",
+        "coordinates": [25.1466, -80.4084]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 65,
+        "minGroup": 2,
+        "maxGroup": 10
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["8:00 AM", "10:30 AM", "3:00 PM"]
+      },
+      "includes": ["Kayak & paddle", "Life jacket", "Dry bag", "Naturalist guide", "Park entry fee"],
+      "requirements": ["Minimum age 6 years", "Basic paddling ability", "Bring water"],
+      "images": ["https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg", "https://images.pexels.com/photos/2382681/pexels-photo-2382681.jpeg"],
+      "rating": 4.8,
+      "reviews": 189,
+      "operatorName": "Keys Eco-Tours"
+    },
+    {
+      "id": "exp_015",
+      "operatorId": "op_012",
+      "title": "Tampa Bay Dolphin Watch Eco-Cruise",
+      "category": "eco_tour",
+      "vibe": ["wildlife", "family_friendly", "educational"],
+      "description": "Cruise Tampa Bay's productive waters in search of bottlenose dolphins. Our marine biologist shares insights about dolphin behavior, local ecology, and conservation efforts.",
+      "location": {
+        "city": "St. Petersburg",
+        "county": "Pinellas",
+        "address": "Vinoy Marina, 701 Bayshore Dr NE",
+        "coordinates": [27.7773, -82.6271]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 55,
+        "minGroup": 1,
+        "maxGroup": 40
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["10:00 AM", "1:00 PM", "4:00 PM"]
+      },
+      "includes": ["Marine biologist guide", "Dolphin sighting guarantee", "Shaded seating", "Restrooms", "Snacks & beverages"],
+      "requirements": ["All ages welcome", "Stroller accessible", "Binoculars recommended"],
+      "images": ["https://images.pexels.com/photos/3690474/pexels-photo-3690474.jpeg", "https://images.pexels.com/photos/1878294/pexels-photo-1878294.jpeg"],
+      "rating": 4.7,
+      "reviews": 312,
+      "operatorName": "Bay Adventures"
+    },
+    {
+      "id": "exp_016",
+      "operatorId": "op_013",
+      "title": "Little Havana Cuban Food & Culture Tour",
+      "category": "food_tour",
+      "vibe": ["foodie", "cultural", "local_experience"],
+      "description": "Taste authentic Cuban cuisine while exploring Miami's Little Havana! Visit family-owned restaurants, watch cigars being hand-rolled, sip café Cubano, and learn about Cuban-American culture.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Máximo Gómez Park (Domino Park), 1444 SW 8th St",
+        "coordinates": [25.7659, -80.2195]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 95,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "3 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "seasons": "Year-round",
+        "times": ["10:00 AM", "2:00 PM"]
+      },
+      "includes": ["7-8 food tastings", "Cuban coffee", "Mojito sample", "Cigar shop visit", "Historical stories"],
+      "requirements": ["All ages welcome", "Comfortable walking shoes", "Come hungry!"],
+      "images": ["https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg", "https://images.pexels.com/photos/1199960/pexels-photo-1199960.jpeg"],
+      "rating": 4.9,
+      "reviews": 476,
+      "operatorName": "Miami Culinary Tours"
+    },
+    {
+      "id": "exp_017",
+      "operatorId": "op_013",
+      "title": "Wynwood Arts District Food & Street Art Walk",
+      "category": "food_tour",
+      "vibe": ["foodie", "cultural", "instagram_worthy"],
+      "description": "Explore Miami's hippest neighborhood! Admire world-famous street art murals while tasting creative cuisine from food trucks, craft breweries, and innovative restaurants in Wynwood.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Wynwood Walls, 2520 NW 2nd Ave",
+        "coordinates": [25.8010, -80.1995]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 89,
+        "minGroup": 2,
+        "maxGroup": 15
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["11:00 AM", "5:00 PM"]
+      },
+      "includes": ["5-6 food tastings", "Craft beer sample", "Art guide", "Photo opportunities", "Brewery discount"],
+      "requirements": ["Must be 21+ for beer", "Walking tour", "Camera essential"],
+      "images": ["https://images.pexels.com/photos/3646172/pexels-photo-3646172.jpeg", "https://images.pexels.com/photos/2116721/pexels-photo-2116721.jpeg"],
+      "rating": 4.8,
+      "reviews": 298,
+      "operatorName": "Miami Culinary Tours"
+    },
+    {
+      "id": "exp_018",
+      "operatorId": "op_014",
+      "title": "Key West Sunset & Seafood Culinary Experience",
+      "category": "food_tour",
+      "vibe": ["foodie", "romantic", "local_experience"],
+      "description": "Taste Key West's freshest seafood at sunset! Visit 4 waterfront restaurants for conch fritters, key lime pie, fresh catch, and rum cocktails while watching the famous Key West sunset.",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Mallory Square, 400 Wall St",
+        "coordinates": [24.5618, -81.8079]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 125,
+        "minGroup": 2,
+        "maxGroup": 10
+      },
+      "duration": "3 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["5:00 PM"]
+      },
+      "includes": ["4 restaurant stops", "Seafood tastings", "2 cocktails", "Key lime pie", "Sunset viewing"],
+      "requirements": ["Must be 21+ for alcohol", "Reservations required", "Come hungry"],
+      "images": ["https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg", "https://images.pexels.com/photos/566345/pexels-photo-566345.jpeg"],
+      "rating": 4.8,
+      "reviews": 203,
+      "operatorName": "Conch Republic Food Tours"
+    },
+    {
+      "id": "exp_019",
+      "operatorId": "op_015",
+      "title": "St. Augustine Historic Walking Tour",
+      "category": "cultural_tour",
+      "vibe": ["educational", "historic", "cultural"],
+      "description": "Walk through 450 years of history in America's oldest city! Explore the Castillo de San Marcos, Spanish Quarter, and historic landmarks with our expert historian guide.",
+      "location": {
+        "city": "St. Augustine",
+        "county": "St. Johns",
+        "address": "Visitors Center, 10 Castillo Dr",
+        "coordinates": [29.8979, -81.3124]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 35,
+        "minGroup": 1,
+        "maxGroup": 20
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "11:00 AM", "2:00 PM", "4:00 PM"]
+      },
+      "includes": ["Expert historian guide", "Castillo entrance", "Colonial Quarter access", "Walking route map"],
+      "requirements": ["Comfortable walking shoes", "Sun protection", "Water recommended"],
+      "images": ["https://images.pexels.com/photos/2413346/pexels-photo-2413346.jpeg", "https://images.pexels.com/photos/3601426/pexels-photo-3601426.jpeg"],
+      "rating": 4.8,
+      "reviews": 567,
+      "operatorName": "Ancient City Tours"
+    },
+    {
+      "id": "exp_020",
+      "operatorId": "op_015",
+      "title": "St. Augustine Ghost & Legends Night Tour",
+      "category": "cultural_tour",
+      "vibe": ["thrilling", "historic", "unique"],
+      "description": "Explore St. Augustine's haunted history after dark! Visit spooky locations, hear ghost stories, and learn about the city's darker past. This tour has been featured on national TV!",
+      "location": {
+        "city": "St. Augustine",
+        "county": "St. Johns",
+        "address": "Castillo de San Marcos, 1 S Castillo Dr",
+        "coordinates": [29.8988, -81.3124]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 45,
+        "minGroup": 1,
+        "maxGroup": 25
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["8:00 PM", "9:30 PM"]
+      },
+      "includes": ["Theatrical guide", "Ghost stories", "Historic sites", "EMF detector demo", "Photo opportunities"],
+      "requirements": ["Recommended age 10+", "Flashlight helpful", "Uneven surfaces"],
+      "images": ["https://images.pexels.com/photos/2138922/pexels-photo-2138922.jpeg", "https://images.pexels.com/photos/1619569/pexels-photo-1619569.jpeg"],
+      "rating": 4.7,
+      "reviews": 421,
+      "operatorName": "Ancient City Tours"
+    },
+    {
+      "id": "exp_021",
+      "operatorId": "op_016",
+      "title": "Miami Art Deco District Walking Tour",
+      "category": "cultural_tour",
+      "vibe": ["cultural", "photo_friendly", "educational"],
+      "description": "Discover Miami Beach's iconic Art Deco architecture! Explore the world's largest collection of Art Deco buildings on Ocean Drive. Learn about the 1930s design movement and preservation efforts.",
+      "location": {
+        "city": "Miami Beach",
+        "county": "Miami-Dade",
+        "address": "Art Deco Welcome Center, 1001 Ocean Dr",
+        "coordinates": [25.7814, -80.1299]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 30,
+        "minGroup": 1,
+        "maxGroup": 15
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["10:30 AM", "6:30 PM"]
+      },
+      "includes": ["Architecture expert guide", "Historic photos", "Building access", "Design insights"],
+      "requirements": ["Walking tour", "Camera recommended", "Sunscreen advised"],
+      "images": ["https://images.pexels.com/photos/2869490/pexels-photo-2869490.jpeg", "https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg"],
+      "rating": 4.6,
+      "reviews": 342,
+      "operatorName": "Miami Design Preservation"
+    },
+    {
+      "id": "exp_022",
+      "operatorId": "op_017",
+      "title": "Zip-Line Adventure Through Florida Treetops",
+      "category": "adventure_tour",
+      "vibe": ["adventure", "adrenaline", "thrilling"],
+      "description": "Soar through the forest canopy on 7 zip-lines ranging from 200 to 750 feet! Experience speeds up to 35 mph and heights up to 65 feet. Professional guides ensure your safety and fun.",
+      "location": {
+        "city": "Ocala",
+        "county": "Marion",
+        "address": "Forever Florida Wilderness, 4755 N Kenansville Rd",
+        "coordinates": [27.9506, -81.1945]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 89,
+        "minGroup": 1,
+        "maxGroup": 12
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "11:30 AM", "2:00 PM"]
+      },
+      "includes": ["All safety equipment", "Professional guides", "Training", "GoPro photos available"],
+      "requirements": ["Minimum age 10 years", "Weight: 70-250 lbs", "Closed-toe shoes required"],
+      "images": ["https://images.pexels.com/photos/163520/zipline-adventure-zipline-rope-163520.jpeg", "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg"],
+      "rating": 4.9,
+      "reviews": 234,
+      "operatorName": "Forever Florida Adventures"
+    },
+    {
+      "id": "exp_023",
+      "operatorId": "op_018",
+      "title": "Skydiving Over the Florida Keys",
+      "category": "adventure_tour",
+      "vibe": ["adrenaline", "bucket_list", "unique"],
+      "description": "Experience the ultimate adrenaline rush! Tandem skydive from 10,000 feet with breathtaking views of the turquoise waters and coral reefs. Video packages available.",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Key West International Airport, 3491 S Roosevelt Blvd",
+        "coordinates": [24.5561, -81.7594]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 349,
+        "minGroup": 1,
+        "maxGroup": 4
+      },
+      "duration": "3 hours total (30 seconds freefall)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (weather dependent)",
+        "times": ["8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM"]
+      },
+      "includes": ["Tandem jump", "Professional instructor", "Training", "All equipment", "Certificate"],
+      "requirements": ["Minimum age 18", "Weight limit 225 lbs", "Medical clearance if over 40"],
+      "images": ["https://images.pexels.com/photos/863974/pexels-photo-863974.jpeg", "https://images.pexels.com/photos/74512/pexels-photo-74512.jpeg"],
+      "rating": 4.9,
+      "reviews": 156,
+      "operatorName": "Skydive Key West"
+    },
+    {
+      "id": "exp_024",
+      "operatorId": "op_019",
+      "title": "Orlando Theme Parks Hop-On Hop-Off Tour",
+      "category": "bus_tour",
+      "vibe": ["convenient", "family_friendly", "value"],
+      "description": "Visit multiple Orlando theme parks with ease! Our shuttle service connects Universal Studios, Islands of Adventure, Disney Springs, and International Drive attractions. Skip the parking hassle!",
+      "location": {
+        "city": "Orlando",
+        "county": "Orange",
+        "address": "Convention Center, 9800 International Dr",
+        "coordinates": [28.4279, -81.4693]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 45,
+        "minGroup": 1,
+        "maxGroup": 50
+      },
+      "duration": "Full day (unlimited rides)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"]
+      },
+      "includes": ["Unlimited rides", "15 stops", "Air-conditioned bus", "Live guide", "Route map"],
+      "requirements": ["All ages welcome", "Park admission sold separately", "First-come seating"],
+      "images": ["https://images.pexels.com/photos/2869490/pexels-photo-2869490.jpeg", "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg"],
+      "rating": 4.4,
+      "reviews": 521,
+      "operatorName": "Orlando Theme Park Express"
+    },
+    {
+      "id": "exp_025",
+      "operatorId": "op_020",
+      "title": "Florida Keys Island Hopping Multi-Day Tour",
+      "category": "bus_tour",
+      "vibe": ["scenic", "comprehensive", "relaxing"],
+      "description": "3-day guided tour from Miami to Key West! Visit Key Largo, Islamorada, Marathon, and Key West. Includes accommodations, some meals, snorkeling, and all transportation.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Bayside Marketplace, 401 Biscayne Blvd",
+        "coordinates": [25.7780, -80.1863]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 895,
+        "minGroup": 8,
+        "maxGroup": 30
+      },
+      "duration": "3 days / 2 nights",
+      "availability": {
+        "daysOfWeek": ["Fri"],
+        "seasons": "November-May (winter season)",
+        "times": ["7:00 AM"]
+      },
+      "includes": ["2 nights hotel", "Daily breakfast", "2 dinners", "Snorkel trip", "Key West tour", "Bus transportation"],
+      "requirements": ["Advance booking required", "Single supplement available", "Moderate walking"],
+      "images": ["https://images.pexels.com/photos/1118874/pexels-photo-1118874.jpeg", "https://images.pexels.com/photos/3228842/pexels-photo-3228842.jpeg"],
+      "rating": 4.7,
+      "reviews": 89,
+      "operatorName": "Florida Adventures Bus Tours"
+    },
+    {
+      "id": "exp_026",
+      "operatorId": "op_002",
+      "title": "Islamorada Sunset Tarpon Fishing",
+      "category": "fishing_charter",
+      "vibe": ["adventure", "scenic", "expert_guide"],
+      "description": "Target the 'silver king' during golden hour! Tarpon fishing at sunset is an Islamorada tradition. Watch these massive fish roll and jump as the sky turns orange and pink.",
+      "location": {
+        "city": "Islamorada",
+        "county": "Monroe",
+        "address": "Robbie's Marina, 77522 Overseas Hwy",
+        "coordinates": [24.9283, -80.6154]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 550,
+        "minGroup": 1,
+        "maxGroup": 2
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "April-August (peak tarpon season)",
+        "times": ["4:00 PM", "5:00 PM"]
+      },
+      "includes": ["All tackle", "Live bait", "Fishing license", "Photos", "Catch & release only"],
+      "requirements": ["Minimum age 12 years", "Previous fishing experience helpful", "Sunscreen essential"],
+      "images": ["https://images.pexels.com/photos/1423564/pexels-photo-1423564.jpeg", "https://images.pexels.com/photos/2403251/pexels-photo-2403251.jpeg"],
+      "rating": 4.8,
+      "reviews": 97,
+      "operatorName": "Keys Flats Fishing"
+    },
+    {
+      "id": "exp_027",
+      "operatorId": "op_021",
+      "title": "Tampa Bay Craft Brewery Bus Tour",
+      "category": "bus_tour",
+      "vibe": ["social", "foodie", "local_experience"],
+      "description": "Sample Tampa's best craft beers! Visit 4 award-winning breweries, meet the brewmasters, enjoy beer tastings, and learn about the brewing process. Designated driver included!",
+      "location": {
+        "city": "Tampa",
+        "county": "Hillsborough",
+        "address": "Armature Works, 1910 N Ola Ave",
+        "coordinates": [27.9652, -82.4488]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 89,
+        "minGroup": 6,
+        "maxGroup": 24
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Fri", "Sat"],
+        "seasons": "Year-round",
+        "times": ["2:00 PM", "6:00 PM"]
+      },
+      "includes": ["4 brewery stops", "12+ beer samples", "Snacks", "Bus transportation", "Brewery swag"],
+      "requirements": ["Must be 21+ years old", "Valid ID required", "Food available at stops"],
+      "images": ["https://images.pexels.com/photos/1267696/pexels-photo-1267696.jpeg", "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg"],
+      "rating": 4.8,
+      "reviews": 167,
+      "operatorName": "Tampa Bay Brew Bus"
+    },
+    {
+      "id": "exp_028",
+      "operatorId": "op_007",
+      "title": "Stand-Up Paddleboard Yoga at Sunrise",
+      "category": "water_sports",
+      "vibe": ["relaxing", "unique", "wellness"],
+      "description": "Find your zen on the water! Start your day with SUP yoga on calm Destin waters. Perfect for all levels - our certified instructors adapt poses to your experience level.",
+      "location": {
+        "city": "Destin",
+        "county": "Okaloosa",
+        "address": "Crab Island, Destin Harbor",
+        "coordinates": [30.3950, -86.4822]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 55,
+        "minGroup": 2,
+        "maxGroup": 10
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Wed", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["7:00 AM"]
+      },
+      "includes": ["SUP board", "Paddle", "Life jacket", "Yoga instruction", "Waterproof bag"],
+      "requirements": ["Basic swimming ability", "All fitness levels welcome", "Bring water"],
+      "images": ["https://images.pexels.com/photos/1472887/pexels-photo-1472887.jpeg", "https://images.pexels.com/photos/3984353/pexels-photo-3984353.jpeg"],
+      "rating": 4.9,
+      "reviews": 142,
+      "operatorName": "Emerald Coast Kayak"
+    },
+    {
+      "id": "exp_029",
+      "operatorId": "op_022",
+      "title": "Naples Sunset Dolphin & Shelling Cruise",
+      "category": "boat_tour",
+      "vibe": ["chill", "scenic", "family_friendly"],
+      "description": "Explore Naples' pristine coastline as the sun sets! Search for dolphins, collect shells on secluded beaches, and watch for sea turtles. Complimentary wine and appetizers served.",
+      "location": {
+        "city": "Naples",
+        "county": "Collier",
+        "address": "Naples City Dock, 880 12th Ave S",
+        "coordinates": [26.1379, -81.7962]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 95,
+        "minGroup": 2,
+        "maxGroup": 20
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["5:30 PM", "6:00 PM"]
+      },
+      "includes": ["Wine & appetizers", "Shell collecting bags", "Naturalist guide", "Dolphin sighting guarantee"],
+      "requirements": ["All ages welcome", "Bring camera", "Sunscreen recommended"],
+      "images": ["https://images.pexels.com/photos/3690474/pexels-photo-3690474.jpeg", "https://images.pexels.com/photos/1118874/pexels-photo-1118874.jpeg"],
+      "rating": 4.8,
+      "reviews": 278,
+      "operatorName": "Naples Coastal Expeditions"
+    },
+    {
+      "id": "exp_030",
+      "operatorId": "op_023",
+      "title": "Private Luxury Yacht Charter - Biscayne Bay",
+      "category": "boat_tour",
+      "vibe": ["luxury", "romantic", "exclusive"],
+      "description": "Experience Miami in style aboard our 55-foot luxury yacht. Cruise Biscayne Bay, anchor at exclusive islands, enjoy gourmet catering, and receive VIP treatment from our professional crew.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Miami Beach Marina, 300 Alton Rd",
+        "coordinates": [25.7709, -80.1394]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 2500,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["10:00 AM", "2:00 PM", "6:00 PM"]
+      },
+      "includes": ["Private yacht", "Professional captain & crew", "Gourmet catering", "Premium beverages", "Water toys", "Bluetooth sound system"],
+      "requirements": ["Private booking only", "48-hour cancellation policy", "Customizable itinerary"],
+      "images": ["https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg", "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg"],
+      "rating": 4.9,
+      "reviews": 67,
+      "operatorName": "Elite Miami Yachts"
+    },
+    {
+      "id": "exp_031",
+      "operatorId": "op_010",
+      "title": "Crystal River Manatee Kayak Tour",
+      "category": "eco_tour",
+      "vibe": ["educational", "wildlife", "adventure"],
+      "description": "Paddle alongside manatees in their natural habitat! Crystal-clear springs provide perfect viewing. More intimate than snorkeling - observe these gentle giants from your kayak.",
+      "location": {
+        "city": "Crystal River",
+        "county": "Citrus",
+        "address": "Three Sisters Springs, 123 NW US Hwy 19",
+        "coordinates": [28.8998, -82.5891]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 75,
+        "minGroup": 1,
+        "maxGroup": 8
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "November-March (manatee season)",
+        "times": ["7:30 AM", "10:00 AM"]
+      },
+      "includes": ["Kayak & paddle", "Life jacket", "Waterproof camera bag", "Naturalist guide", "Hot drinks"],
+      "requirements": ["Minimum age 8 years", "Basic paddling ability", "Dress in layers"],
+      "images": ["https://images.pexels.com/photos/1906779/pexels-photo-1906779.jpeg", "https://images.pexels.com/photos/3720862/pexels-photo-3720862.jpeg"],
+      "rating": 4.8,
+      "reviews": 312,
+      "operatorName": "Crystal River Manatee Tours"
+    },
+    {
+      "id": "exp_032",
+      "operatorId": "op_024",
+      "title": "Fort Myers Beach Parasailing & Jet Ski Combo",
+      "category": "water_sports",
+      "vibe": ["adventure", "adrenaline", "value"],
+      "description": "Best of both worlds! Soar 400 feet above Fort Myers Beach on our parasail, then zoom across the Gulf on a jet ski. Perfect combo for thrill-seekers!",
+      "location": {
+        "city": "Fort Myers Beach",
+        "county": "Lee",
+        "address": "Times Square, 1000 Estero Blvd",
+        "coordinates": [26.4520, -81.9496]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 199,
+        "minGroup": 1,
+        "maxGroup": 6
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (weather dependent)",
+        "times": ["9:00 AM", "12:00 PM", "3:00 PM"]
+      },
+      "includes": ["Parasail flight", "1-hour jet ski rental", "All safety equipment", "Photo package available"],
+      "requirements": ["Minimum age 16 (jet ski driver)", "Weight limit 450 lbs (parasail)", "Swimsuit required"],
+      "images": ["https://images.pexels.com/photos/1430672/pexels-photo-1430672.jpeg", "https://images.pexels.com/photos/163933/dubai-jet-ski-marine-sports-sea-163933.jpeg"],
+      "rating": 4.7,
+      "reviews": 201,
+      "operatorName": "Gulf Coast Water Sports"
+    },
+    {
+      "id": "exp_033",
+      "operatorId": "op_016",
+      "title": "Miami Vice & Narcos TV Locations Tour",
+      "category": "cultural_tour",
+      "vibe": ["cultural", "unique", "photo_friendly"],
+      "description": "See Miami through the lens of TV history! Visit filming locations from Miami Vice, Narcos, Dexter, and more. Hear behind-the-scenes stories and see how Miami shaped these iconic shows.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Ocean Drive, 1200 Ocean Dr",
+        "coordinates": [25.7850, -80.1299]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 65,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["10:00 AM", "2:00 PM"]
+      },
+      "includes": ["Bus transportation", "TV historian guide", "Filming locations", "Behind-the-scenes stories", "Photo opportunities"],
+      "requirements": ["All ages welcome", "Camera recommended", "Water provided"],
+      "images": ["https://images.pexels.com/photos/2869490/pexels-photo-2869490.jpeg", "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg"],
+      "rating": 4.6,
+      "reviews": 128,
+      "operatorName": "Miami Design Preservation"
+    },
+    {
+      "id": "exp_034",
+      "operatorId": "op_025",
+      "title": "Sanibel Island Shelling & Lighthouse Tour",
+      "category": "eco_tour",
+      "vibe": ["relaxing", "scenic", "family_friendly"],
+      "description": "Shell seeker's paradise! Sanibel is world-famous for shelling. Explore pristine beaches, learn shell identification, visit the historic lighthouse, and find your treasures.",
+      "location": {
+        "city": "Sanibel Island",
+        "county": "Lee",
+        "address": "Sanibel Lighthouse, 112 Periwinkle Way",
+        "coordinates": [26.4509, -82.0093]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 60,
+        "minGroup": 2,
+        "maxGroup": 15
+      },
+      "duration": "3 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (best after storms)",
+        "times": ["8:00 AM", "2:00 PM"]
+      },
+      "includes": ["Shell collecting bags", "Shell ID guide", "Lighthouse visit", "Expert shelling guide", "Water & snacks"],
+      "requirements": ["All ages welcome", "Sun protection essential", "Bring camera"],
+      "images": ["https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg", "https://images.pexels.com/photos/1374295/pexels-photo-1374295.jpeg"],
+      "rating": 4.7,
+      "reviews": 189,
+      "operatorName": "Sanibel Sea School"
+    },
+    {
+      "id": "exp_035",
+      "operatorId": "op_014",
+      "title": "Key West Hemingway House & Bar Hopping Tour",
+      "category": "cultural_tour",
+      "vibe": ["cultural", "social", "historic"],
+      "description": "Follow in Papa's footsteps! Visit Hemingway's home and studio, meet the six-toed cats, then bar hop to his favorite watering holes. Literary history meets island nightlife!",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Hemingway House, 907 Whitehead St",
+        "coordinates": [24.5511, -81.8003]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 85,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "3 hours",
+      "availability": {
+        "daysOfWeek": ["Wed", "Thu", "Fri", "Sat"],
+        "seasons": "Year-round",
+        "times": ["4:00 PM"]
+      },
+      "includes": ["Hemingway House admission", "3 bar stops", "1 drink per stop", "Literary guide", "Walking tour"],
+      "requirements": ["Must be 21+ years old", "Valid ID required", "Comfortable walking shoes"],
+      "images": ["https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg", "https://images.pexels.com/photos/327170/pexels-photo-327170.jpeg"],
+      "rating": 4.8,
+      "reviews": 243,
+      "operatorName": "Conch Republic Food Tours"
+    },
+    {
+      "id": "exp_036",
+      "operatorId": "op_026",
+      "title": "Orlando Helicopter Tour - Theme Parks & Downtown",
+      "category": "adventure_tour",
+      "vibe": ["thrilling", "unique", "scenic"],
+      "description": "See Orlando from the sky! Fly over Disney World, Universal Studios, SeaWorld, and downtown Orlando. Unforgettable bird's-eye views of Central Florida's top attractions.",
+      "location": {
+        "city": "Orlando",
+        "county": "Orange",
+        "address": "Orlando Executive Airport, 365 Rickenbacker Dr",
+        "coordinates": [28.5455, -81.3329]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 250,
+        "minGroup": 2,
+        "maxGroup": 3
+      },
+      "duration": "30 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (weather dependent)",
+        "times": ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "5:00 PM"]
+      },
+      "includes": ["30-min helicopter flight", "Professional pilot", "Noise-canceling headsets", "Photo opportunities", "Safety briefing"],
+      "requirements": ["All ages welcome (infants on lap)", "Weight limit 300 lbs per seat", "48-hour cancellation policy"],
+      "images": ["https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg", "https://images.pexels.com/photos/3680316/pexels-photo-3680316.jpeg"],
+      "rating": 4.9,
+      "reviews": 178,
+      "operatorName": "Air Florida Helicopters"
+    },
+    {
+      "id": "exp_037",
+      "operatorId": "op_008",
+      "title": "Everglades Photography Safari at Sunset",
+      "category": "airboat_tour",
+      "vibe": ["photography", "wildlife", "scenic"],
+      "description": "Perfect for photographers! Smaller groups, slower speeds, and sunset golden hour lighting. Capture alligators, birds, and stunning Everglades landscapes with expert photo guidance.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Everglades Safari Park, 26700 SW 8th St",
+        "coordinates": [25.7639, -80.5858]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 79,
+        "minGroup": 4,
+        "maxGroup": 8
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["5:00 PM", "6:00 PM"]
+      },
+      "includes": ["90-min airboat tour", "Photography guide", "Tripod use", "Photo tips", "Golden hour timing"],
+      "requirements": ["Bring camera with manual mode", "Telephoto lens recommended", "Sunset viewing"],
+      "images": ["https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg", "https://images.pexels.com/photos/4666757/pexels-photo-4666757.jpeg"],
+      "rating": 4.9,
+      "reviews": 92,
+      "operatorName": "Everglades Safari Park"
+    },
+    {
+      "id": "exp_038",
+      "operatorId": "op_027",
+      "title": "Clearwater Beach Sunset Catamaran Cruise",
+      "category": "boat_tour",
+      "vibe": ["romantic", "chill", "scenic"],
+      "description": "Sail into the sunset on our spacious catamaran! Enjoy complimentary champagne, watch dolphins play, and witness Clearwater's famous sunset. Perfect for couples and small groups.",
+      "location": {
+        "city": "Clearwater Beach",
+        "county": "Pinellas",
+        "address": "Clearwater Marina, 25 Causeway Blvd",
+        "coordinates": [27.9659, -82.8317]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 75,
+        "minGroup": 2,
+        "maxGroup": 30
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["6:00 PM", "7:00 PM"]
+      },
+      "includes": ["Champagne toast", "Light appetizers", "Cash bar", "Dolphin sightings", "Sunset views"],
+      "requirements": ["All ages welcome", "BYOB allowed", "Reservations recommended"],
+      "images": ["https://images.pexels.com/photos/1118874/pexels-photo-1118874.jpeg", "https://images.pexels.com/photos/1430677/pexels-photo-1430677.jpeg"],
+      "rating": 4.8,
+      "reviews": 387,
+      "operatorName": "Gulf Coast Sailing"
+    },
+    {
+      "id": "exp_039",
+      "operatorId": "op_028",
+      "title": "Jacksonville River Taxi Historic Tour",
+      "category": "boat_tour",
+      "vibe": ["educational", "scenic", "convenient"],
+      "description": "Explore Jacksonville's waterfront history! This narrated water taxi tour covers the St. Johns River, downtown skyline, and historic neighborhoods. Hop off at any stop to explore.",
+      "location": {
+        "city": "Jacksonville",
+        "county": "Duval",
+        "address": "Jacksonville Landing, 2 Independent Dr",
+        "coordinates": [30.3252, -81.6556]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 25,
+        "minGroup": 1,
+        "maxGroup": 75
+      },
+      "duration": "90 minutes (full loop)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
+      },
+      "includes": ["Narrated tour", "Hop-on hop-off option", "8 stops", "Climate-controlled cabin"],
+      "requirements": ["All ages welcome", "Wheelchair accessible", "Pets allowed"],
+      "images": ["https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg", "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg"],
+      "rating": 4.5,
+      "reviews": 156,
+      "operatorName": "Jax River Taxi"
+    },
+    {
+      "id": "exp_040",
+      "operatorId": "op_029",
+      "title": "Pensacola Beach Snorkel & Dive Shipwreck Tour",
+      "category": "eco_tour",
+      "vibe": ["adventure", "educational", "unique"],
+      "description": "Explore the artificial reef! Dive or snorkel historic shipwrecks intentionally sunk to create marine habitat. See tropical fish, sea turtles, and even reef sharks!",
+      "location": {
+        "city": "Pensacola Beach",
+        "county": "Escambia",
+        "address": "Pensacola Beach Marina, 715 Pensacola Beach Blvd",
+        "coordinates": [30.3332, -87.1464]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 110,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "April-October (best visibility)",
+        "times": ["8:00 AM", "1:00 PM"]
+      },
+      "includes": ["Snorkel/dive gear", "2 dive sites", "Marine guide", "Snacks & drinks", "Underwater photos"],
+      "requirements": ["Minimum age 10 (snorkel) or certified (dive)", "Swimming ability required", "Dive certification for scuba"],
+      "images": ["https://images.pexels.com/photos/2404370/pexels-photo-2404370.jpeg", "https://images.pexels.com/photos/3490257/pexels-photo-3490257.jpeg"],
+      "rating": 4.8,
+      "reviews": 143,
+      "operatorName": "Panhandle Dive Adventures"
+    },
+    {
+      "id": "exp_041",
+      "operatorId": "op_030",
+      "title": "Marco Island Kayak Mangrove Tunnel Tour",
+      "category": "eco_tour",
+      "vibe": ["adventure", "scenic", "photography"],
+      "description": "Paddle through magical mangrove tunnels! Navigate winding water trails through ancient mangrove forests. Spot dolphins, manatees, sea turtles, and countless birds.",
+      "location": {
+        "city": "Marco Island",
+        "county": "Collier",
+        "address": "Tigertail Beach, 430 Hernando Dr",
+        "coordinates": [25.9340, -81.7206]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 70,
+        "minGroup": 2,
+        "maxGroup": 10
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["8:00 AM", "10:30 AM", "3:00 PM"]
+      },
+      "includes": ["Kayak & paddle", "Life jacket", "Dry bag", "Naturalist guide", "Wildlife sightings"],
+      "requirements": ["Minimum age 6 years", "Basic paddling ability", "Bring camera"],
+      "images": ["https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg", "https://images.pexels.com/photos/2382681/pexels-photo-2382681.jpeg"],
+      "rating": 4.9,
+      "reviews": 224,
+      "operatorName": "Marco Adventures"
+    },
+    {
+      "id": "exp_042",
+      "operatorId": "op_013",
+      "title": "Miami Brickell Food Crawl & Rooftop Bars",
+      "category": "food_tour",
+      "vibe": ["foodie", "social", "nightlife"],
+      "description": "Explore Miami's modern downtown! Visit 4 Brickell hotspots for international cuisine and craft cocktails. End at a rooftop bar with stunning skyline views.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Brickell City Centre, 701 S Miami Ave",
+        "coordinates": [25.7657, -80.1917]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 110,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "3.5 hours",
+      "availability": {
+        "daysOfWeek": ["Thu", "Fri", "Sat"],
+        "seasons": "Year-round",
+        "times": ["6:00 PM"]
+      },
+      "includes": ["4 restaurant stops", "Food tastings", "3 cocktails", "Rooftop bar access", "Local foodie guide"],
+      "requirements": ["Must be 21+ years old", "Business casual attire", "Reservations required"],
+      "images": ["https://images.pexels.com/photos/3646172/pexels-photo-3646172.jpeg", "https://images.pexels.com/photos/2869490/pexels-photo-2869490.jpeg"],
+      "rating": 4.7,
+      "reviews": 187,
+      "operatorName": "Miami Culinary Tours"
+    },
+    {
+      "id": "exp_043",
+      "operatorId": "op_003",
+      "title": "Miami Millionaire's Row & Stiltsville Cruise",
+      "category": "boat_tour",
+      "vibe": ["scenic", "unique", "photo_friendly"],
+      "description": "See Miami's most exclusive real estate and the mysterious Stiltsville houses! Cruise past celebrity mansions, then visit the historic houses on stilts in Biscayne Bay.",
+      "location": {
+        "city": "Miami",
+        "county": "Miami-Dade",
+        "address": "Bayside Marketplace Marina, 401 Biscayne Blvd",
+        "coordinates": [25.7780, -80.1863]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 70,
+        "minGroup": 1,
+        "maxGroup": 45
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["11:00 AM", "2:00 PM"]
+      },
+      "includes": ["Narrated cruise", "Stiltsville viewing", "Celebrity homes tour", "Air-conditioned cabin", "Beverages available"],
+      "requirements": ["All ages welcome", "Camera essential", "Sunscreen recommended"],
+      "images": ["https://images.pexels.com/photos/2869499/pexels-photo-2869499.jpeg", "https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg"],
+      "rating": 4.6,
+      "reviews": 298,
+      "operatorName": "Biscayne Bay Cruises"
+    },
+    {
+      "id": "exp_044",
+      "operatorId": "op_017",
+      "title": "Ocala Canopy Zip-Line & Rope Challenge Course",
+      "category": "adventure_tour",
+      "vibe": ["adventure", "challenge", "group_activity"],
+      "description": "Ultimate treetop adventure! Combine 7 zip-lines with a challenging rope course featuring 65+ obstacles. Team-building perfection or solo challenge - you choose!",
+      "location": {
+        "city": "Ocala",
+        "county": "Marion",
+        "address": "Forever Florida Wilderness, 4755 N Kenansville Rd",
+        "coordinates": [27.9506, -81.1945]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 129,
+        "minGroup": 1,
+        "maxGroup": 16
+      },
+      "duration": "4 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "1:00 PM"]
+      },
+      "includes": ["7 zip-lines", "Rope course access", "All safety equipment", "Professional guides", "Photo package available"],
+      "requirements": ["Minimum age 10 years", "Weight: 70-250 lbs", "Good physical condition", "Closed-toe shoes required"],
+      "images": ["https://images.pexels.com/photos/163520/zipline-adventure-zipline-rope-163520.jpeg", "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg"],
+      "rating": 4.9,
+      "reviews": 312,
+      "operatorName": "Forever Florida Adventures"
+    },
+    {
+      "id": "exp_045",
+      "operatorId": "op_019",
+      "title": "Orlando to Kennedy Space Center Day Trip",
+      "category": "bus_tour",
+      "vibe": ["educational", "family_friendly", "space"],
+      "description": "Explore NASA's launch headquarters! Round-trip bus from Orlando with admission to Kennedy Space Center. See rockets, meet astronauts, tour launch pads, and experience space history.",
+      "location": {
+        "city": "Orlando",
+        "county": "Orange",
+        "address": "Convention Center, 9800 International Dr",
+        "coordinates": [28.4279, -81.4693]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 135,
+        "minGroup": 1,
+        "maxGroup": 50
+      },
+      "duration": "Full day (10 hours)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["7:30 AM"]
+      },
+      "includes": ["Round-trip bus", "Kennedy Space Center admission", "Bus tour of NASA facilities", "Lunch time", "Air-conditioned transport"],
+      "requirements": ["All ages welcome", "Bring lunch money", "Comfortable shoes"],
+      "images": ["https://images.pexels.com/photos/2085998/pexels-photo-2085998.jpeg", "https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg"],
+      "rating": 4.7,
+      "reviews": 431,
+      "operatorName": "Orlando Theme Park Express"
+    },
+    {
+      "id": "exp_046",
+      "operatorId": "op_006",
+      "title": "Miami Beach Flyboarding Experience",
+      "category": "water_sports",
+      "vibe": ["adrenaline", "unique", "thrilling"],
+      "description": "Fly like Iron Man! Jet-powered water boots propel you 30 feet in the air. Our instructors get you flying in minutes. Unforgettable rush!",
+      "location": {
+        "city": "Miami Beach",
+        "county": "Miami-Dade",
+        "address": "South Pointe Park Marina, 1 Washington Ave",
+        "coordinates": [25.7617, -80.1393]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 199,
+        "minGroup": 1,
+        "maxGroup": 4
+      },
+      "duration": "60 minutes (20 min flight time)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (weather dependent)",
+        "times": ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
+      },
+      "includes": ["Flyboard equipment", "Professional instruction", "Safety gear", "Wetsuit if needed", "GoPro footage available"],
+      "requirements": ["Minimum age 14 years", "Weight: 100-250 lbs", "Strong swimming ability", "No pregnant guests"],
+      "images": ["https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg", "https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg"],
+      "rating": 4.8,
+      "reviews": 176,
+      "operatorName": "Miami Water Sports"
+    },
+    {
+      "id": "exp_047",
+      "operatorId": "op_015",
+      "title": "St. Augustine Scenic Train & Trolley Tour",
+      "category": "bus_tour",
+      "vibe": ["convenient", "family_friendly", "historic"],
+      "description": "Explore St. Augustine in style! Hop aboard our historic-style trolley for a narrated tour of 20+ landmarks. Hop-on hop-off at your leisure to explore museums and attractions.",
+      "location": {
+        "city": "St. Augustine",
+        "county": "St. Johns",
+        "address": "Visitors Center, 10 Castillo Dr",
+        "coordinates": [29.8979, -81.3124]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 38,
+        "minGroup": 1,
+        "maxGroup": 75
+      },
+      "duration": "Full day (unlimited rides)",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"]
+      },
+      "includes": ["Unlimited rides", "Narrated tour", "20+ stops", "Map & discount book"],
+      "requirements": ["All ages welcome", "Stroller accessible", "First-come seating"],
+      "images": ["https://images.pexels.com/photos/2413346/pexels-photo-2413346.jpeg", "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg"],
+      "rating": 4.5,
+      "reviews": 789,
+      "operatorName": "Ancient City Tours"
+    },
+    {
+      "id": "exp_048",
+      "operatorId": "op_004",
+      "title": "Key West Glass Bottom Boat Coral Reef Tour",
+      "category": "boat_tour",
+      "vibe": ["family_friendly", "educational", "scenic"],
+      "description": "See the reef without getting wet! Our glass bottom boat provides perfect viewing of North America's only living coral reef. Perfect for non-swimmers and all ages.",
+      "location": {
+        "city": "Key West",
+        "county": "Monroe",
+        "address": "Historic Seaport, 201 William St",
+        "coordinates": [24.5558, -81.8039]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 55,
+        "minGroup": 1,
+        "maxGroup": 60
+      },
+      "duration": "2 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round",
+        "times": ["10:00 AM", "1:00 PM", "3:30 PM"]
+      },
+      "includes": ["Glass bottom viewing", "Marine naturalist guide", "Reef commentary", "Restrooms", "Snacks & drinks for purchase"],
+      "requirements": ["All ages welcome", "Wheelchair accessible", "No swimming"],
+      "images": ["https://images.pexels.com/photos/2224861/pexels-photo-2224861.jpeg", "https://images.pexels.com/photos/3680316/pexels-photo-3680316.jpeg"],
+      "rating": 4.6,
+      "reviews": 412,
+      "operatorName": "Reef Explorer Tours"
+    },
+    {
+      "id": "exp_049",
+      "operatorId": "op_031",
+      "title": "Daytona Beach Motorsports Experience & Tour",
+      "category": "cultural_tour",
+      "vibe": ["adrenaline", "unique", "educational"],
+      "description": "Visit the 'World Center of Racing'! Tour Daytona International Speedway, walk the pit road, visit Victory Lane, and learn NASCAR history. Upgrade to ride along in a race car!",
+      "location": {
+        "city": "Daytona Beach",
+        "county": "Volusia",
+        "address": "Daytona International Speedway, 1801 W International Speedway Blvd",
+        "coordinates": [29.1848, -81.0712]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 45,
+        "minGroup": 1,
+        "maxGroup": 30
+      },
+      "duration": "90 minutes",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "Year-round (no race days)",
+        "times": ["10:00 AM", "12:00 PM", "2:00 PM"]
+      },
+      "includes": ["Speedway tour", "Pit road access", "Victory Lane photo", "NASCAR history", "Museum admission"],
+      "requirements": ["All ages welcome", "Ride-along available (+$125)", "Camera allowed"],
+      "images": ["https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg", "https://images.pexels.com/photos/2127037/pexels-photo-2127037.jpeg"],
+      "rating": 4.7,
+      "reviews": 267,
+      "operatorName": "Daytona Racing Experience"
+    },
+    {
+      "id": "exp_050",
+      "operatorId": "op_012",
+      "title": "Tampa Bay Sunset Kayak & Bioluminescence Tour",
+      "category": "eco_tour",
+      "vibe": ["romantic", "unique", "wildlife"],
+      "description": "Magical evening paddle! Watch the sunset then experience glowing bioluminescent waters. Every paddle stroke creates sparkles - like kayaking through stars! Summer months only.",
+      "location": {
+        "city": "St. Petersburg",
+        "county": "Pinellas",
+        "address": "Fort De Soto Park, 3500 Pinellas Bayway S",
+        "coordinates": [27.6331, -82.7295]
+      },
+      "pricing": {
+        "currency": "USD",
+        "pricePerPerson": 75,
+        "minGroup": 2,
+        "maxGroup": 12
+      },
+      "duration": "2.5 hours",
+      "availability": {
+        "daysOfWeek": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "seasons": "June-September (bioluminescence season)",
+        "times": ["7:00 PM", "7:30 PM"]
+      },
+      "includes": ["Kayak & paddle", "Life jacket", "Headlamp", "Naturalist guide", "Bioluminescence guarantee"],
+      "requirements": ["Minimum age 8 years", "Basic swimming ability", "Dark conditions - after sunset"],
+      "images": ["https://images.pexels.com/photos/1906779/pexels-photo-1906779.jpeg", "https://images.pexels.com/photos/5945876/pexels-photo-5945876.jpeg"],
+      "rating": 4.9,
+      "reviews": 198,
+      "operatorName": "Bay Adventures"
+    }
+  ],
+  "operators": {
+    "op_001": { "name": "Captain Jack's Charters", "location": "Key West, FL", "verified": true, "yearEstablished": 2008 },
+    "op_002": { "name": "Keys Flats Fishing", "location": "Islamorada, FL", "verified": true, "yearEstablished": 2012 },
+    "op_003": { "name": "Biscayne Bay Cruises", "location": "Miami, FL", "verified": true, "yearEstablished": 2010 },
+    "op_004": { "name": "Reef Explorer Tours", "location": "Key West, FL", "verified": true, "yearEstablished": 2015 },
+    "op_005": { "name": "FTL Party Cruises", "location": "Fort Lauderdale, FL", "verified": true, "yearEstablished": 2018 },
+    "op_006": { "name": "Miami Water Sports", "location": "Miami Beach, FL", "verified": true, "yearEstablished": 2013 },
+    "op_007": { "name": "Emerald Coast Kayak", "location": "Destin, FL", "verified": true, "yearEstablished": 2011 },
+    "op_008": { "name": "Everglades Safari Park", "location": "Miami, FL", "verified": true, "yearEstablished": 1989 },
+    "op_009": { "name": "Wild Lime Adventures", "location": "Homestead, FL", "verified": true, "yearEstablished": 2016 },
+    "op_010": { "name": "Crystal River Manatee Tours", "location": "Crystal River, FL", "verified": true, "yearEstablished": 2007 },
+    "op_011": { "name": "Keys Eco-Tours", "location": "Key Largo, FL", "verified": true, "yearEstablished": 2014 },
+    "op_012": { "name": "Bay Adventures", "location": "St. Petersburg, FL", "verified": true, "yearEstablished": 2009 },
+    "op_013": { "name": "Miami Culinary Tours", "location": "Miami, FL", "verified": true, "yearEstablished": 2017 },
+    "op_014": { "name": "Conch Republic Food Tours", "location": "Key West, FL", "verified": true, "yearEstablished": 2015 },
+    "op_015": { "name": "Ancient City Tours", "location": "St. Augustine, FL", "verified": true, "yearEstablished": 2005 },
+    "op_016": { "name": "Miami Design Preservation", "location": "Miami Beach, FL", "verified": true, "yearEstablished": 1998 },
+    "op_017": { "name": "Forever Florida Adventures", "location": "Ocala, FL", "verified": true, "yearEstablished": 2003 },
+    "op_018": { "name": "Skydive Key West", "location": "Key West, FL", "verified": true, "yearEstablished": 2012 },
+    "op_019": { "name": "Orlando Theme Park Express", "location": "Orlando, FL", "verified": true, "yearEstablished": 2010 },
+    "op_020": { "name": "Florida Adventures Bus Tours", "location": "Miami, FL", "verified": true, "yearEstablished": 2014 },
+    "op_021": { "name": "Tampa Bay Brew Bus", "location": "Tampa, FL", "verified": true, "yearEstablished": 2016 },
+    "op_022": { "name": "Naples Coastal Expeditions", "location": "Naples, FL", "verified": true, "yearEstablished": 2011 },
+    "op_023": { "name": "Elite Miami Yachts", "location": "Miami, FL", "verified": true, "yearEstablished": 2018 },
+    "op_024": { "name": "Gulf Coast Water Sports", "location": "Fort Myers Beach, FL", "verified": true, "yearEstablished": 2013 },
+    "op_025": { "name": "Sanibel Sea School", "location": "Sanibel Island, FL", "verified": true, "yearEstablished": 2008 },
+    "op_026": { "name": "Air Florida Helicopters", "location": "Orlando, FL", "verified": true, "yearEstablished": 2015 },
+    "op_027": { "name": "Gulf Coast Sailing", "location": "Clearwater Beach, FL", "verified": true, "yearEstablished": 2010 },
+    "op_028": { "name": "Jax River Taxi", "location": "Jacksonville, FL", "verified": true, "yearEstablished": 2012 },
+    "op_029": { "name": "Panhandle Dive Adventures", "location": "Pensacola Beach, FL", "verified": true, "yearEstablished": 2014 },
+    "op_030": { "name": "Marco Adventures", "location": "Marco Island, FL", "verified": true, "yearEstablished": 2011 },
+    "op_031": { "name": "Daytona Racing Experience", "location": "Daytona Beach, FL", "verified": true, "yearEstablished": 2006 }
+  },
+  "metadata": {
+    "totalExperiences": 50,
+    "categoriesRepresented": ["fishing_charter", "boat_tour", "water_sports", "airboat_tour", "eco_tour", "food_tour", "cultural_tour", "adventure_tour", "bus_tour"],
+    "regionsRepresented": ["South Florida", "Florida Keys", "Central Florida", "West Coast/Gulf", "Northeast Florida", "Panhandle"],
+    "priceRange": {
+      "min": 25,
+      "max": 2500,
+      "average": 120
+    },
+    "generatedDate": "2025-11-18",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,28 @@
+export const sampleExperiences = [
+  {
+    id: '1',
+    title: 'Rick\'s Cafe Sunset Experience',
+    description: 'Watch cliff divers and enjoy the Caribbean\'s most famous sunset',
+    image_url: 'https://images.pexels.com/photos/1118874/pexels-photo-1118874.jpeg?auto=compress&cs=tinysrgb&w=800',
+    video_url: null,
+    price_jmd: 12000,
+    price_usd: 80,
+    location_name: 'Negril',
+    category: 'chill',
+    duration_minutes: 180,
+    operator_id: '1',
+  },
+  {
+    id: '2',
+    title: 'Dunn\'s River Falls Adventure',
+    description: 'Climb the iconic waterfall with an experienced guide',
+    image_url: 'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800',
+    video_url: null,
+    price_jmd: 15000,
+    price_usd: 100,
+    location_name: 'Ocho Rios',
+    category: 'adventure',
+    duration_minutes: 240,
+    operator_id: '2',
+  },
+];
