@@ -45,6 +45,9 @@ export default function ProfileScreen({ session, onBack, onNavigate, onLogout }:
   useEffect(() => {
     if (session) {
       loadUserProfile();
+    } else {
+      // Guest mode
+      setIsLoading(false);
     }
   }, [session]);
 
@@ -52,11 +55,13 @@ export default function ProfileScreen({ session, onBack, onNavigate, onLogout }:
     try {
       setIsLoading(true);
 
+      if (!session?.user) return;
+
       const email = session.user.email || '';
       const name = session.user.user_metadata?.full_name ||
-                   session.user.user_metadata?.name ||
-                   email.split('@')[0] ||
-                   'Guest User';
+        session.user.user_metadata?.name ||
+        email.split('@')[0] ||
+        'Guest User';
 
       const createdAt = new Date(session.user.created_at);
       const memberSince = createdAt.toLocaleDateString('en-US', {
@@ -337,7 +342,7 @@ export default function ProfileScreen({ session, onBack, onNavigate, onLogout }:
                   className="font-medium text-gray-900"
                   style={{ fontFamily: 'Poppins' }}
                 >
-                  About LOOKYAH
+                  About TourFlo
                 </span>
               </div>
               <ChevronRight className="w-5 h-5 text-gray-400" />

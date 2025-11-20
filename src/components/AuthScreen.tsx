@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase';
 import sunAnimation from '../../public/Sun-separated.json';
 
 interface AuthScreenProps {
-  onAuth: () => void;
+  onAuth: (role?: 'tourist' | 'operator') => void;
 }
 
 export default function AuthScreen({ onAuth }: AuthScreenProps) {
@@ -13,13 +13,14 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
+  const [role, setRole] = useState<'tourist' | 'operator'>('tourist');
 
   const handleGuestContinue = () => {
     setLoading(true);
 
     setTimeout(() => {
-      localStorage.setItem('lookyah_guest_mode', 'true');
-      onAuth();
+      localStorage.setItem('tourflo_guest_mode', 'true');
+      onAuth('tourist');
     }, 400);
   };
 
@@ -32,6 +33,11 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
+          options: {
+            data: {
+              role: role
+            }
+          }
         });
 
         if (!error && data.user) {
@@ -42,18 +48,21 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
             timeline: 'browsing',
             vibe_pref: 'chill',
             referral_code: `USER-${Date.now().toString(36).toUpperCase()}`,
+            role: role
           });
 
-          onAuth();
+          onAuth(role);
         }
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
 
-        if (!error) {
-          onAuth();
+        if (!error && data.user) {
+          // Fetch user role if needed, or default to tourist if not found in metadata
+          const userRole = data.user.user_metadata?.role || 'tourist';
+          onAuth(userRole);
         }
       }
     } catch (error) {
@@ -90,19 +99,19 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
           className="mb-6"
         >
           <img
-            src="/logos/lookyahjamaicablack.png"
-            alt="Lookyah Jamaica"
+            src="/logos/tourflo-black.png"
+            alt="TourFlo"
             className="h-32 md:h-40 w-auto"
           />
         </motion.div>
 
         <p className="text-2xl md:text-3xl text-gray-700 text-center mb-12 px-6"
-           style={{
-             fontFamily: 'Poppins, sans-serif',
-             fontWeight: 400,
-             fontStyle: 'italic',
-             letterSpacing: '0.02em'
-           }}>
+          style={{
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 400,
+            fontStyle: 'italic',
+            letterSpacing: '0.02em'
+          }}>
           "it deh yah jus luk!"
         </p>
       </div>
@@ -137,6 +146,34 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
         </div>
 
         <form onSubmit={handleEmailAuth} className="space-y-3">
+          {isSignUp && (
+            <div className="flex gap-4 mb-2">
+              <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl border-2 cursor-pointer transition-all ${role === 'tourist' ? 'border-[#0077BE] bg-blue-50' : 'border-gray-200 bg-white'}`}>
+                <input
+                  type="radio"
+                  name="role"
+                  value="tourist"
+                  checked={role === 'tourist'}
+                  onChange={() => setRole('tourist')}
+                  className="hidden"
+                />
+                <span className="text-2xl">🏖️</span>
+                <span className={`font-medium ${role === 'tourist' ? 'text-[#0077BE]' : 'text-gray-600'}`}>Tourist</span>
+              </label>
+              <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl border-2 cursor-pointer transition-all ${role === 'operator' ? 'border-[#0077BE] bg-blue-50' : 'border-gray-200 bg-white'}`}>
+                <input
+                  type="radio"
+                  name="role"
+                  value="operator"
+                  checked={role === 'operator'}
+                  onChange={() => setRole('operator')}
+                  className="hidden"
+                />
+                <span className="text-2xl">🚤</span>
+                <span className={`font-medium ${role === 'operator' ? 'text-[#0077BE]' : 'text-gray-600'}`}>Operator</span>
+              </label>
+            </div>
+          )}
           <input
             type="email"
             value={email}
@@ -164,7 +201,7 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
         </form>
 
         <p className="text-center text-gray-700 text-base mt-6"
-           style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
+          style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
           {isSignUp ? 'Already have an account? ' : 'Need an account? '}
           <button
             onClick={() => setIsSignUp(!isSignUp)}
@@ -175,8 +212,8 @@ export default function AuthScreen({ onAuth }: AuthScreenProps) {
         </p>
 
         <p className="text-center text-gray-600 text-sm mt-4 px-6"
-           style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}>
-          Start exploring Jamaica's best experiences
+          style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}>
+          Start exploring Florida's best experiences
         </p>
       </div>
     </div>

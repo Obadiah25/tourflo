@@ -31,7 +31,7 @@ interface BookingData {
   processingFee: number;
   discount: number;
   guestInfo: GuestInfo;
-  paymentMethod: 'card' | 'lynk' | 'wipay' | 'cash' | null;
+  paymentMethod: 'card' | 'lynk' | 'wipay' | 'cash' | 'applepay' | 'googlepay' | null;
   bookingReference: string | null;
   status: 'pending' | 'processing' | 'confirmed' | 'failed';
 }

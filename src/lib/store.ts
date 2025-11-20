@@ -5,11 +5,11 @@ interface AppState {
   isOnboarded: boolean;
   isFirstVisit: boolean;
   hasCompletedOnboarding: boolean;
-  currency_pref: 'USD' | 'JMD';
+  currency_pref: 'USD';
   userPreferences: Record<string, any>;
   setUser: (id: string | null) => void;
   completeOnboarding: () => void;
-  setCurrency: (currency: 'USD' | 'JMD') => void;
+  setCurrency: (currency: 'USD') => void;
   setUserPreference: (key: string, value: any) => void;
   markVisited: () => void;
 }
@@ -17,13 +17,13 @@ interface AppState {
 export const useAppStore = create<AppState>((set) => ({
   user_id: null,
   isOnboarded: false,
-  isFirstVisit: localStorage.getItem('lookyah_visited') !== 'true',
-  hasCompletedOnboarding: localStorage.getItem('lookyah_onboarded') === 'true',
+  isFirstVisit: localStorage.getItem('tourflo_visited') !== 'true',
+  hasCompletedOnboarding: localStorage.getItem('tourflo_onboarded') === 'true',
   currency_pref: 'USD',
   userPreferences: {},
   setUser: (id) => set({ user_id: id }),
   completeOnboarding: () => {
-    localStorage.setItem('lookyah_onboarded', 'true');
+    localStorage.setItem('tourflo_onboarded', 'true');
     set({ isOnboarded: true, hasCompletedOnboarding: true });
   },
   setCurrency: (currency) => set({ currency_pref: currency }),
@@ -32,7 +32,7 @@ export const useAppStore = create<AppState>((set) => ({
       userPreferences: { ...state.userPreferences, [key]: value },
     })),
   markVisited: () => {
-    localStorage.setItem('lookyah_visited', 'true');
+    localStorage.setItem('tourflo_visited', 'true');
     set({ isFirstVisit: false });
   },
 }));

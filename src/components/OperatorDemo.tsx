@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import OperatorOnboarding from './operator/OperatorOnboarding';
-import OperatorDashboard from './operator/OperatorDashboard';
+import OperatorDashboardSimple from './operator/OperatorDashboardSimple';
 import BookingManagement from './operator/BookingManagement';
 import ExperienceCreation from './operator/ExperienceCreation';
 import EarningsDashboard from './operator/EarningsDashboard';
@@ -9,7 +9,7 @@ import EarningsDashboard from './operator/EarningsDashboard';
 type DemoView = 'onboarding' | 'dashboard' | 'bookings' | 'create' | 'earnings';
 
 export default function OperatorDemo() {
-  const [currentView, setCurrentView] = useState<DemoView>('onboarding');
+  const [currentView, setCurrentView] = useState<DemoView>('dashboard'); // Start on dashboard
 
   const views: DemoView[] = ['onboarding', 'dashboard', 'bookings', 'create', 'earnings'];
   const viewLabels: Record<DemoView, string> = {
@@ -55,7 +55,7 @@ export default function OperatorDemo() {
       </div>
 
       {currentView === 'onboarding' && <OperatorOnboarding />}
-      {currentView === 'dashboard' && <OperatorDashboard />}
+      {currentView === 'dashboard' && <OperatorDashboardSimple />}
       {currentView === 'bookings' && <BookingManagement />}
       {currentView === 'create' && <ExperienceCreation />}
       {currentView === 'earnings' && <EarningsDashboard />}

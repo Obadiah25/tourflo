@@ -1,50 +1,32 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, PanInfo, AnimatePresence } from 'framer-motion';
-import { Heart, MapPin, DollarSign, Share2, Search, X } from 'lucide-react';
+import { Heart, MapPin, Share2, Search, X, Clock } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAppStore } from '../lib/store';
 import BookingSheet from './BookingSheet';
 import { haptics } from '../lib/haptics';
-import { sampleExperiences } from '../lib/sampleData';
+import { floridaExperiences, FloridaExperience } from '../lib/floridaData';
+import { FLORIDA_CATEGORIES } from '../constants/categories';
 import Toast from './Toast';
 import MapModal from './MapModal';
-
-interface Experience {
-  id: string;
-  title: string;
-  description: string;
-  image_url: string;
-  video_url: string | null;
-  price_jmd: number;
-  price_usd: number;
-  location_name: string;
-  location_lat: number | null;
-  location_lng: number | null;
-  category: string;
-  operator_id: string;
-  operator?: {
-    logo_url: string | null;
-    name: string;
-  };
-}
 
 interface DiscoveryFeedProps {
   session: any;
   onBookingChange: (isOpen: boolean) => void;
-  onExperienceSelect: (experienceId: string) => void;
+  onExperienceSelect: (experience: FloridaExperience) => void;
 }
 
 export default function DiscoveryFeed({ session, onBookingChange, onExperienceSelect }: DiscoveryFeedProps) {
-  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [experiences, setExperiences] = useState<FloridaExperience[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
-  const [bookingExperience, setBookingExperience] = useState<Experience | null>(null);
+  const [bookingExperience, setBookingExperience] = useState<FloridaExperience | null>(null);
   const [heartAnimation, setHeartAnimation] = useState<{ x: number; y: number } | null>(null);
   const [hasSwipedBefore, setHasSwipedBefore] = useState(() => {
     return localStorage.getItem('has_swiped') === 'true';
   });
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedVibe, setSelectedVibe] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedPrice, setSelectedPrice] = useState('All');
   const [selectedLocation, setSelectedLocation] = useState('All');
   const [showFilters, setShowFilters] = useState(false);
@@ -60,7 +42,9 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
 
   useEffect(() => {
     console.log('🏝️  DiscoveryFeed component mounted');
-    loadExperiences();
+    // For this refactor, we are using the local Florida data as the primary source
+    setExperiences(floridaExperiences);
+
     if (session) {
       loadSavedExperiences();
     }
@@ -68,47 +52,9 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   }, [currentIndex]);
-
-  const loadExperiences = async () => {
-    console.log('🔍 Loading experiences from database...');
-    try {
-      const { data, error } = await supabase
-        .from('experiences')
-        .select(`
-          *,
-          operator:operators(
-            logo_url,
-            name
-          )
-        `)
-        .eq('is_active', true)
-        .limit(20);
-
-      if (error) {
-        console.error('❌ Error loading experiences:', error);
-        console.log('🔄 Falling back to sample data');
-        setExperiences(sampleExperiences as any);
-        return;
-      }
-
-      if (data && data.length > 0) {
-        console.log(`✅ Successfully loaded ${data.length} experiences from database`);
-        console.log('📋 First experience:', data[0].title);
-        setExperiences(data);
-      } else {
-        console.warn('⚠️  No experiences found in database');
-        console.log('🔄 Using sample data as fallback');
-        setExperiences(sampleExperiences as any);
-      }
-    } catch (err) {
-      console.error('💥 Exception loading experiences:', err);
-      console.log('🔄 Falling back to sample data');
-      setExperiences(sampleExperiences as any);
-    }
-  };
 
   const loadSavedExperiences = async () => {
     if (!session?.user?.id) return;
@@ -218,14 +164,14 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
     lastTapTime.current = now;
   };
 
-  const handleShare = async (experience: Experience) => {
+  const handleShare = async (experience: FloridaExperience) => {
     haptics.light();
 
     if (navigator.share) {
       try {
         await navigator.share({
           title: experience.title,
-          text: `Check out ${experience.title} on LOOKYAH Jamaica!`,
+          text: `Check out ${experience.title} on TourFlo Florida!`,
           url: window.location.href,
         });
       } catch (error) {
@@ -258,25 +204,25 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
       exp.location_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       exp.description.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesVibe = selectedVibe === 'All' || exp.category.toLowerCase() === selectedVibe.toLowerCase();
+    const matchesCategory = selectedCategory === 'All' || exp.category_id === selectedCategory;
 
-    const priceUSD = exp.price_usd / 100;
+    const priceUSD = exp.price_usd;
     let matchesPrice = true;
-    if (selectedPrice === 'Under $30') matchesPrice = priceUSD < 30;
-    else if (selectedPrice === '$30-$50') matchesPrice = priceUSD >= 30 && priceUSD <= 50;
-    else if (selectedPrice === '$50+') matchesPrice = priceUSD > 50;
+    if (selectedPrice === 'Under $50') matchesPrice = priceUSD < 50;
+    else if (selectedPrice === '$50-$100') matchesPrice = priceUSD >= 50 && priceUSD <= 100;
+    else if (selectedPrice === '$100+') matchesPrice = priceUSD > 100;
 
     const matchesLocation = selectedLocation === 'All' ||
       exp.location_name.toLowerCase().includes(selectedLocation.toLowerCase());
 
-    return matchesSearch && matchesVibe && matchesPrice && matchesLocation;
+    return matchesSearch && matchesCategory && matchesPrice && matchesLocation;
   });
 
-  const activeFiltersCount = [selectedVibe, selectedPrice, selectedLocation].filter(f => f !== 'All').length + (searchTerm ? 1 : 0);
+  const activeFiltersCount = [selectedCategory, selectedPrice, selectedLocation].filter(f => f !== 'All').length + (searchTerm ? 1 : 0);
 
   const handleClearAll = () => {
     setSearchTerm('');
-    setSelectedVibe('All');
+    setSelectedCategory('All');
     setSelectedPrice('All');
     setSelectedLocation('All');
     setCurrentIndex(0);
@@ -297,12 +243,7 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
       <div className="fixed inset-0 bg-gradient-skysand flex items-center justify-center">
         <div className="text-center px-6">
           <div className="text-6xl mb-4 animate-pulse">🌴😎</div>
-          <p className="text-xl text-gray-700 mb-2">Loading experiences...</p>
-          <p className="text-sm text-gray-600">Finding the best Jamaica has to offer</p>
-          <div className="mt-4 text-xs text-gray-500">
-            {console.log('Current experiences count:', experiences.length)}
-            Check console (F12) if this takes more than 3 seconds
-          </div>
+          <p className="text-xl text-gray-700 mb-2">Loading Florida experiences...</p>
         </div>
       </div>
     );
@@ -327,119 +268,103 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
   }
 
   const currentExperience = filteredExperiences[currentIndex];
-  const price = currency_pref === 'JMD'
-    ? `J$${(currentExperience.price_jmd / 100).toFixed(2)}`
-    : `$${(currentExperience.price_usd / 100).toFixed(2)} USD`;
-
-  console.log('🎨 Rendering DiscoveryFeed with', experiences.length, 'experiences');
-  console.log('📍 Current experience:', currentExperience.title);
+  const category = FLORIDA_CATEGORIES.find(c => c.id === currentExperience.category_id);
+  const CategoryIcon = category?.icon;
 
   return (
     <div className="relative w-full h-full">
       <div className="absolute top-0 left-0 right-0 flex-shrink-0 px-4 pt-4 pb-2 z-30 pointer-events-none">
         <div className="pointer-events-auto">
-        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl mb-3 flex items-center px-4 py-3">
-          <Search className="w-5 h-5 text-white/90 drop-shadow-md" />
-          <input
-            type="text"
-            placeholder="Search experiences..."
-            defaultValue={searchTerm}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            className="flex-1 ml-2 bg-transparent outline-none text-sm text-white placeholder-white/70"
-            style={{ fontFamily: 'Poppins' }}
-          />
-          {searchTerm && (
-            <button onClick={() => { setSearchTerm(''); setCurrentIndex(0); }}>
-              <X className="w-5 h-5 text-white/90" />
-            </button>
-          )}
-        </div>
-
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl px-4 py-2 text-sm font-medium mb-3 text-white"
-          style={{ fontFamily: 'Poppins' }}
-        >
-          {showFilters ? 'Hide Filters' : 'Show Filters'} {activeFiltersCount > 0 && `(${activeFiltersCount})`}
-        </button>
-
-        {showFilters && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 mb-3 space-y-3"
-          >
-            <div>
-              <p className="text-xs font-semibold text-white/90 mb-2 drop-shadow-md">Vibe</p>
-              <div className="flex gap-2 overflow-x-auto pb-2">
-                {['All', 'Chill', 'Adventure', 'Party', 'Foodie'].map(vibe => (
-                  <button
-                    key={vibe}
-                    onClick={() => { setSelectedVibe(vibe); setCurrentIndex(0); }}
-                    className={`flex-shrink-0 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors ${
-                      selectedVibe === vibe
-                        ? 'bg-[#0077BE] text-white border-[#0077BE]'
-                        : 'bg-white/10 text-white border-white/30'
-                    }`}
-                    style={{ fontFamily: 'Poppins' }}
-                  >
-                    {vibe}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold text-white/90 mb-2 drop-shadow-md">Price</p>
-              <div className="flex gap-2 overflow-x-auto pb-2">
-                {['All', 'Under $30', '$30-$50', '$50+'].map(price => (
-                  <button
-                    key={price}
-                    onClick={() => { setSelectedPrice(price); setCurrentIndex(0); }}
-                    className={`flex-shrink-0 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors ${
-                      selectedPrice === price
-                        ? 'bg-[#FF6B35] text-white border-[#FF6B35]'
-                        : 'bg-white/10 text-white border-white/30'
-                    }`}
-                    style={{ fontFamily: 'Poppins' }}
-                  >
-                    {price}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold text-white/90 mb-2 drop-shadow-md">Location</p>
-              <div className="flex gap-2 overflow-x-auto pb-2">
-                {['All', 'Miami-Dade', 'Monroe', 'Osceola', 'Orange', 'Hillsborough', 'Pinellas', 'St. Johns', 'Brevard'].map(location => (
-                  <button
-                    key={location}
-                    onClick={() => { setSelectedLocation(location); setCurrentIndex(0); }}
-                    className={`flex-shrink-0 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors ${
-                      selectedLocation === location
-                        ? 'bg-[#0077BE] text-white border-[#0077BE]'
-                        : 'bg-white/10 text-white border-white/30'
-                    }`}
-                    style={{ fontFamily: 'Poppins' }}
-                  >
-                    {location}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {activeFiltersCount > 0 && (
-              <button
-                onClick={handleClearAll}
-                className="w-full bg-white/20 text-white py-2 rounded-lg text-sm font-medium hover:bg-white/30 transition-colors"
-                style={{ fontFamily: 'Poppins' }}
-              >
-                Clear All Filters
+          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl mb-3 flex items-center px-4 py-3">
+            <Search className="w-5 h-5 text-white/90 drop-shadow-md" />
+            <input
+              type="text"
+              placeholder="Search Florida..."
+              defaultValue={searchTerm}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              className="flex-1 ml-2 bg-transparent outline-none text-sm text-white placeholder-white/70"
+              style={{ fontFamily: 'Poppins' }}
+            />
+            {searchTerm && (
+              <button onClick={() => { setSearchTerm(''); setCurrentIndex(0); }}>
+                <X className="w-5 h-5 text-white/90" />
               </button>
             )}
-          </motion.div>
-        )}
+          </div>
+
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl px-4 py-2 text-sm font-medium mb-3 text-white"
+            style={{ fontFamily: 'Poppins' }}
+          >
+            {showFilters ? 'Hide Filters' : 'Show Filters'} {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+          </button>
+
+          {showFilters && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-4 mb-3 space-y-3"
+            >
+              <div>
+                <p className="text-xs font-semibold text-white/90 mb-2 drop-shadow-md">Category</p>
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                  <button
+                    onClick={() => { setSelectedCategory('All'); setCurrentIndex(0); }}
+                    className={`flex-shrink-0 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors ${selectedCategory === 'All'
+                      ? 'bg-[#0077BE] text-white border-[#0077BE]'
+                      : 'bg-white/10 text-white border-white/30'
+                      }`}
+                  >
+                    All
+                  </button>
+                  {FLORIDA_CATEGORIES.map(cat => (
+                    <button
+                      key={cat.id}
+                      onClick={() => { setSelectedCategory(cat.id); setCurrentIndex(0); }}
+                      className={`flex-shrink-0 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${selectedCategory === cat.id
+                        ? 'bg-[#0077BE] text-white border-[#0077BE]'
+                        : 'bg-white/10 text-white border-white/30'
+                        }`}
+                      style={{ fontFamily: 'Poppins' }}
+                    >
+                      <cat.icon className="w-3 h-3" />
+                      {cat.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-white/90 mb-2 drop-shadow-md">Price</p>
+                <div className="flex gap-2 overflow-x-auto pb-2">
+                  {['All', 'Under $50', '$50-$100', '$100+'].map(price => (
+                    <button
+                      key={price}
+                      onClick={() => { setSelectedPrice(price); setCurrentIndex(0); }}
+                      className={`flex-shrink-0 rounded-full border-2 px-4 py-2 text-sm font-medium transition-colors ${selectedPrice === price
+                        ? 'bg-[#FF6B35] text-white border-[#FF6B35]'
+                        : 'bg-white/10 text-white border-white/30'
+                        }`}
+                      style={{ fontFamily: 'Poppins' }}
+                    >
+                      {price}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {activeFiltersCount > 0 && (
+                <button
+                  onClick={handleClearAll}
+                  className="w-full bg-white/20 text-white py-2 rounded-lg text-sm font-medium hover:bg-white/30 transition-colors"
+                  style={{ fontFamily: 'Poppins' }}
+                >
+                  Clear All Filters
+                </button>
+              )}
+            </motion.div>
+          )}
         </div>
       </div>
 
@@ -503,20 +428,15 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
 
           <div className="absolute bottom-28 sm:bottom-36 left-0 right-0 px-4 sm:px-6 text-white">
             <div className="flex items-center gap-3 mb-2 sm:mb-3">
-              {currentExperience.operator?.logo_url ? (
-                <img
-                  src={currentExperience.operator.logo_url}
-                  alt={currentExperience.operator.name}
-                  className="h-8 w-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-2 py-1"
-                />
-              ) : (
-                <div className="h-8 px-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg flex items-center">
-                  <span className="text-xs text-white/70">Operator Logo</span>
-                </div>
+              <div className="h-8 px-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg flex items-center">
+                <span className="text-xs text-white/90 font-medium">{currentExperience.operator_name}</span>
+              </div>
+              {category && (
+                <span className="px-3 py-1.5 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-sm text-white font-medium shadow-lg flex items-center gap-1.5">
+                  {CategoryIcon && <CategoryIcon className="w-3.5 h-3.5" />}
+                  {category.name}
+                </span>
               )}
-              <span className="px-3 py-1.5 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-sm text-white font-medium shadow-lg animate-pulse-slow">
-                😎 Chill
-              </span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 leading-tight" style={{ fontFamily: 'Poppins', fontWeight: 700, textShadow: '0 4px 12px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6)' }}>
@@ -525,35 +445,29 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
 
             <div className="flex items-baseline gap-2 mb-2 sm:mb-3">
               <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'Poppins', fontWeight: 800, textShadow: '0 3px 10px rgba(0,0,0,0.7)' }}>
-                {currency_pref === 'JMD' ? `J$${(currentExperience.price_jmd / 100).toFixed(0)}` : `$${(currentExperience.price_usd / 100).toFixed(0)}`}
+                ${currentExperience.price_usd}
               </span>
-              <span className="text-base sm:text-lg md:text-xl text-white/95 font-medium">{currency_pref}</span>
-              <span className="text-sm text-white/80 font-light">per person</span>
+              <span className="text-sm text-white/80 font-light">{currentExperience.price_note || 'per person'}</span>
             </div>
 
             <div className="flex items-center gap-2 sm:gap-3 text-white/90 text-xs sm:text-sm mb-3 sm:mb-4" style={{ fontFamily: 'Poppins', fontWeight: 400 }}>
               <div className="flex items-center gap-2">
                 <div className="relative">
-                  <div className="w-2.5 h-2.5 bg-blue-400 rounded-full shadow-lg"></div>
-                  <div className="absolute inset-0 w-2.5 h-2.5 bg-blue-400 rounded-full animate-ping"></div>
+                  <div className="w-2.5 h-2.5 bg-green-400 rounded-full shadow-lg"></div>
+                  <div className="absolute inset-0 w-2.5 h-2.5 bg-green-400 rounded-full animate-ping"></div>
                 </div>
-                <span className="font-medium">Open now</span>
+                <span className="font-medium">Available</span>
               </div>
               <span>•</span>
               <span>{currentExperience.location_name}</span>
-              <span>•</span>
-              <span>17 spots left</span>
             </div>
 
             <button
               onClick={() => {
-                console.log('🎯 Explore & Book clicked!');
-                console.log('📦 Experience ID:', currentExperience.id);
-                console.log('📝 Experience Title:', currentExperience.title);
                 if (navigator.vibrate) {
                   navigator.vibrate(10);
                 }
-                onExperienceSelect(currentExperience.id);
+                onExperienceSelect(currentExperience);
               }}
               className="w-full bg-gradient-to-r from-[#390067] to-purple-700 text-white font-semibold text-base sm:text-lg py-2.5 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transition-all mb-2 sm:mb-3"
               style={{ fontFamily: 'Poppins', fontWeight: 600 }}
@@ -562,9 +476,9 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
             </button>
 
             <div className="flex items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-white/80" style={{ fontFamily: 'Poppins' }}>
-              <span>⏱️ 2-3 hours</span>
+              <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {currentExperience.duration_hours}h</span>
               <span>•</span>
-              <span>⭐ 4.9 (1,243)</span>
+              <span>⭐ {currentExperience.rating} ({currentExperience.reviews_count})</span>
             </div>
           </div>
 
@@ -574,11 +488,10 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
               className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all"
             >
               <Heart
-                className={`w-6 h-6 sm:w-7 sm:h-7 ${
-                  savedIds.has(currentExperience.id)
-                    ? 'text-red-500 fill-red-500'
-                    : 'text-white'
-                }`}
+                className={`w-6 h-6 sm:w-7 sm:h-7 ${savedIds.has(currentExperience.id)
+                  ? 'text-red-500 fill-red-500'
+                  : 'text-white'
+                  }`}
                 strokeWidth={2.5}
               />
             </button>
@@ -616,7 +529,7 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
 
       {bookingExperience && (
         <BookingSheet
-          experience={bookingExperience}
+          experience={bookingExperience as any} // Casting for now as BookingSheet might need updates too
           session={session}
           onClose={() => {
             setBookingExperience(null);
@@ -634,7 +547,7 @@ export default function DiscoveryFeed({ session, onBookingChange, onExperienceSe
       <MapModal
         isOpen={showMapModal}
         onClose={() => setShowMapModal(false)}
-        experience={currentExperience}
+        experience={currentExperience as any}
       />
     </div>
   );

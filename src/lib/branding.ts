@@ -10,6 +10,7 @@ export const TOURFLO_LOGOS = {
   chatAvatar: '/logos/tourguidesmall.png',
 };
 
+// Legacy export for backward compatibility
 export const LOOKYAH_LOGOS = TOURFLO_LOGOS;
 
 export const LOGO_SIZES = {

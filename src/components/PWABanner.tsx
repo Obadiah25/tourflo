@@ -49,8 +49,8 @@ export default function PWABanner() {
           🌴😎
         </div>
         <div className="flex-1">
-          <p className="font-semibold text-gray-900">Add LOOKYAH to home screen</p>
-          <p className="text-sm text-gray-700">Quick access to Jamaica experiences</p>
+          <p className="font-semibold text-gray-900">Add TourFlo to home screen</p>
+          <p className="text-sm text-gray-700">Quick access to Florida experiences</p>
         </div>
         <button
           onClick={handleInstall}

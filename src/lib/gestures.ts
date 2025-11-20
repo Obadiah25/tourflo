@@ -33,7 +33,7 @@ export const cardVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 300,
       damping: 30
     }
@@ -43,7 +43,7 @@ export const cardVariants = {
     opacity: 0,
     scale: 0.8,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 300,
       damping: 30
     }

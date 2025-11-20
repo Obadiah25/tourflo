@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { Share2, Heart, MapPin, Star, Play, Clock, Sunset, Car, Coffee, User, Camera, UtensilsCrossed, DollarSign, Award, MessageCircle, ThumbsUp, UserCheck } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useAppStore } from '../lib/store';
+import { motion } from 'framer-motion';
+
 import { haptics } from '../lib/haptics';
 import { supabase } from '../lib/supabase';
+import { floridaExperiences } from '../lib/floridaData';
 
 interface Experience {
   id: string;
@@ -18,6 +19,10 @@ interface Experience {
   category: string;
   duration_minutes: number;
   operator_id: string;
+  operator_name?: string;
+  operator_verified?: boolean;
+  rating?: number;
+  duration_hours?: number;
 }
 
 interface Operator {
@@ -29,6 +34,7 @@ interface Operator {
 
 interface ExperienceDetailPageProps {
   experienceId: string;
+  initialExperience?: any;
   onBack: () => void;
   onBookingStart?: (experienceData: any, date: string, guests: number, price: number) => void;
 }
@@ -41,15 +47,15 @@ interface Card {
   title: string;
 }
 
-export default function ExperienceDetailPage({ experienceId, onBack, onBookingStart }: ExperienceDetailPageProps) {
+export default function ExperienceDetailPage({ experienceId, initialExperience, onBack, onBookingStart }: ExperienceDetailPageProps) {
   const [currentCard, setCurrentCard] = useState(0);
   const [experience, setExperience] = useState<Experience | null>(null);
   const [operator, setOperator] = useState<Operator | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialExperience);
   const [isSaved, setIsSaved] = useState(false);
   const [peopleCount, setPeopleCount] = useState(2);
   const [showHint, setShowHint] = useState(true);
-  const { currency_pref } = useAppStore();
+
 
   const cards: Card[] = [
     { id: 'hero', type: 'hero', title: 'Hero' },
@@ -63,8 +69,13 @@ export default function ExperienceDetailPage({ experienceId, onBack, onBookingSt
   ];
 
   useEffect(() => {
-    loadExperience();
-  }, [experienceId]);
+    if (initialExperience) {
+      setExperience(initialExperience);
+      setLoading(false);
+    } else {
+      loadExperience();
+    }
+  }, [experienceId, initialExperience]);
 
   useEffect(() => {
     const hasSeenHint = localStorage.getItem('seen_card_swipe_hint');
@@ -93,6 +104,40 @@ export default function ExperienceDetailPage({ experienceId, onBack, onBookingSt
   const loadExperience = async () => {
     try {
       console.log('🔍 Loading experience:', experienceId);
+
+      // First check local Florida data
+      const localExperience = floridaExperiences.find(e => e.id === experienceId);
+
+      if (localExperience) {
+        console.log('✅ Found in local Florida data:', localExperience.title);
+        setExperience({
+          id: localExperience.id,
+          title: localExperience.title,
+          description: localExperience.description,
+          image_url: localExperience.image_url,
+          video_url: localExperience.video_url,
+          price_jmd: localExperience.price_usd * 155, // Approximate conversion
+          price_usd: localExperience.price_usd,
+          location_name: localExperience.location_name,
+          category: localExperience.category_id,
+          duration_minutes: localExperience.duration_hours * 60,
+          duration_hours: localExperience.duration_hours,
+          operator_id: 'local-op', // Placeholder
+          operator_name: localExperience.operator_name,
+          operator_verified: localExperience.operator_verified,
+          rating: localExperience.rating
+        });
+
+        setOperator({
+          id: 'local-op',
+          name: localExperience.operator_name,
+          whatsapp: null,
+          verified: localExperience.operator_verified
+        });
+
+        setLoading(false);
+        return;
+      }
 
       const { data: expData, error: expError } = await supabase
         .from('experiences')
@@ -157,7 +202,7 @@ export default function ExperienceDetailPage({ experienceId, onBack, onBookingSt
         handleSwipe('prev');
       }
     },
-    preventDefaultTouchmoveEvent: true,
+
     trackMouse: true,
     trackTouch: true,
     delta: 40,
@@ -242,13 +287,12 @@ export default function ExperienceDetailPage({ experienceId, onBack, onBookingSt
           <button
             key={index}
             onClick={() => setCurrentCard(index)}
-            className={`transition-all rounded-full ${
-              index === currentCard
-                ? 'w-10 h-2.5 bg-[#0077BE]'
-                : index < currentCard
+            className={`transition-all rounded-full ${index === currentCard
+              ? 'w-10 h-2.5 bg-[#0077BE]'
+              : index < currentCard
                 ? 'w-2.5 h-2.5 bg-white/70'
                 : 'w-2.5 h-2.5 bg-white/40'
-            }`}
+              }`}
             aria-label={`Go to ${card.title}`}
           />
         ))}
@@ -418,18 +462,31 @@ function HeroCard({ experience, price, categoryEmoji, isSaved, setIsSaved }: any
       </div>
 
       <div className="flex-1 flex flex-col justify-between p-4 sm:p-6">
-        <div className="flex gap-2 mb-4">
+        <div className="flex gap-2 mb-2">
           <span className="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm font-medium text-[#0077BE]">
             {experience.category}
           </span>
         </div>
 
         <div className="flex-1">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-tight" style={{ fontFamily: 'Poppins', fontWeight: 700 }}>
+          {/* Operator Info */}
+          <div className="flex items-center gap-2 mb-2">
+            <p className="text-gray-600 text-sm font-medium">
+              Operated by {experience.operator_name || 'TourFlo Partner'}
+            </p>
+            {(experience.operator_verified !== false) && (
+              <div className="bg-blue-100 border border-blue-200 px-2 py-0.5 rounded text-[10px] font-bold text-blue-700 flex items-center gap-1">
+                <UserCheck className="w-3 h-3" />
+                VERIFIED
+              </div>
+            )}
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight" style={{ fontFamily: 'Poppins', fontWeight: 700 }}>
             {experience.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-sm text-gray-600 mb-6">
+          <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
             <span className="flex items-center gap-1">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
               <span className="font-semibold text-gray-900">4.9</span>
@@ -444,7 +501,7 @@ function HeroCard({ experience, price, categoryEmoji, isSaved, setIsSaved }: any
         </div>
 
         <div>
-          <div className="flex items-baseline gap-2 mb-4">
+          <div className="flex items-baseline gap-2 mb-2">
             <span className="text-4xl font-bold text-gray-900">{price}</span>
             <span className="text-sm text-gray-500">per person</span>
           </div>

@@ -112,7 +112,7 @@ function WelcomeCard({ onNext }: { onNext: () => void }) {
       >
         <Sparkles className="w-24 h-24 mb-8 text-[#390067]" />
       </motion.div>
-      <h1 className="text-5xl font-bold mb-4 text-center text-gray-900">Welcome to LOOKYAH</h1>
+      <h1 className="text-5xl font-bold mb-4 text-center text-gray-900">Welcome to TourFlo</h1>
       <p className="text-xl text-center text-gray-700 mb-12">
         Let's set up your business in 6 steps
       </p>
@@ -146,11 +146,10 @@ function BasicInfoCard({ formData, setFormData, onNext }: any) {
               <button
                 key={type}
                 onClick={() => setFormData({ ...formData, businessType: type })}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                  formData.businessType === type
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${formData.businessType === type
                     ? 'bg-[#390067] text-white scale-110'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {type}
               </button>
@@ -189,11 +188,10 @@ function BasicInfoCard({ formData, setFormData, onNext }: any) {
               <button
                 key={parish}
                 onClick={() => setFormData({ ...formData, parish })}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap snap-center transition-all ${
-                  formData.parish === parish
+                className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap snap-center transition-all ${formData.parish === parish
                     ? 'bg-[#390067] text-white scale-110'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {parish}
               </button>
@@ -293,11 +291,10 @@ function VerificationCard({ onNext }: { onNext: () => void }) {
 
               <div
                 onClick={() => handleUpload(doc.id)}
-                className={`bg-white/80 backdrop-blur-md rounded-3xl p-12 border-2 border-dashed cursor-pointer transition-all shadow-lg ${
-                  uploads[doc.id]
+                className={`bg-white/80 backdrop-blur-md rounded-3xl p-12 border-2 border-dashed cursor-pointer transition-all shadow-lg ${uploads[doc.id]
                     ? 'border-green-500 bg-green-50'
                     : 'border-gray-300 hover:border-gray-400'
-                }`}
+                  }`}
               >
                 {uploads[doc.id] ? (
                   <div className="text-center">
@@ -370,9 +367,8 @@ function TierCard({ formData, setFormData, onNext }: any) {
           <div key={tier.id} className="min-w-full snap-center flex items-center justify-center p-8">
             <div
               onClick={() => setFormData({ ...formData, tier: tier.id })}
-              className={`w-full max-w-lg bg-white rounded-3xl p-12 shadow-2xl cursor-pointer transition-all ${
-                formData.tier === tier.id ? 'ring-8 ring-[#FFD700] scale-105' : ''
-              }`}
+              className={`w-full max-w-lg bg-white rounded-3xl p-12 shadow-2xl cursor-pointer transition-all ${formData.tier === tier.id ? 'ring-8 ring-[#FFD700] scale-105' : ''
+                }`}
             >
               <div className="text-center mb-8">
                 <h2 className="text-4xl font-bold text-gray-900 mb-2">{tier.name}</h2>
@@ -529,13 +525,12 @@ function ReviewCard({ formData, onComplete }: any) {
           onClick={() => setAgreed(!agreed)}
           className="w-full bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-gray-200 text-left flex items-start gap-4 shadow-lg"
         >
-          <div className={`w-6 h-6 rounded flex items-center justify-center flex-shrink-0 mt-1 ${
-            agreed ? 'bg-green-500' : 'bg-gray-200'
-          }`}>
+          <div className={`w-6 h-6 rounded flex items-center justify-center flex-shrink-0 mt-1 ${agreed ? 'bg-green-500' : 'bg-gray-200'
+            }`}>
             {agreed && <Check className="w-4 h-4 text-white" />}
           </div>
           <div className="text-gray-700 text-sm">
-            I agree to the Terms of Service and Privacy Policy. I understand that LOOKYAH will review my application.
+            I agree to the Terms of Service and Privacy Policy. I understand that TourFlo will review my application.
           </div>
         </button>
       </div>

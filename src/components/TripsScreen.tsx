@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useAppStore } from '../lib/store';
 import { haptics } from '../lib/haptics';
+import { useBooking } from '../contexts/BookingContext';
+import RatingScreen from './RatingScreen';
 
 interface Booking {
   id: string;
@@ -30,33 +32,61 @@ export default function TripsScreen({ session }: TripsScreenProps) {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming');
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+  const [ratingBooking, setRatingBooking] = useState<Booking | null>(null);
   const { currency_pref } = useAppStore();
+  const { bookingData } = useBooking();
 
   useEffect(() => {
     if (session) {
       loadBookings();
     }
-  }, [session, activeTab]);
+  }, [session, activeTab, bookingData]);
 
   const loadBookings = async () => {
-    const today = new Date().toISOString().split('T')[0];
+    let allBookings: Booking[] = [];
 
-    const query = supabase
-      .from('bookings')
-      .select('*, experiences(title, image_url, location_name)')
-      .eq('user_id', session.user.id);
+    if (session?.user?.id) {
+      const today = new Date().toISOString().split('T')[0];
 
-    if (activeTab === 'upcoming') {
-      query.gte('booking_date', today);
-    } else {
-      query.lt('booking_date', today);
+      const query = supabase
+        .from('bookings')
+        .select('*, experiences(title, image_url, location_name)')
+        .eq('user_id', session.user.id);
+
+      if (activeTab === 'upcoming') {
+        query.gte('booking_date', today);
+      } else {
+        query.lt('booking_date', today);
+      }
+
+      const { data } = await query.order('booking_date', { ascending: activeTab === 'upcoming' });
+      if (data) {
+        allBookings = data as any;
+      }
     }
 
-    const { data } = await query.order('booking_date', { ascending: activeTab === 'upcoming' });
-
-    if (data) {
-      setBookings(data as any);
+    // Add temporary booking from context if it exists and is confirmed
+    if (bookingData.status === 'confirmed' && bookingData.experience && activeTab === 'upcoming') {
+      const tempBooking: Booking = {
+        id: 'temp-' + Date.now(),
+        experience_id: bookingData.experience.id,
+        booking_date: bookingData.selectedDate || new Date().toISOString(),
+        booking_time: '09:00 AM', // Default or from data
+        group_size: bookingData.guestCount,
+        total_price_jmd: bookingData.totalPrice * 155, // Approx rate
+        total_price_usd: bookingData.totalPrice * 100, // stored in cents
+        status: 'confirmed',
+        qr_code: bookingData.bookingReference || 'PENDING',
+        experiences: {
+          title: bookingData.experience.title,
+          image_url: bookingData.experience.image,
+          location_name: bookingData.experience.location
+        }
+      };
+      allBookings = [tempBooking, ...allBookings];
     }
+
+    setBookings(allBookings);
   };
 
   const handleTabChange = (tab: 'upcoming' | 'past') => {
@@ -110,22 +140,20 @@ export default function TripsScreen({ session }: TripsScreenProps) {
           <div className="flex gap-3">
             <button
               onClick={() => handleTabChange('upcoming')}
-              className={`flex-1 py-3 px-6 rounded-2xl font-semibold text-sm transition-all ${
-                activeTab === 'upcoming'
-                  ? 'bg-white text-[#390067] shadow-lg'
-                  : 'bg-white/20 backdrop-blur-md border border-white/30 text-white'
-              }`}
+              className={`flex-1 py-3 px-6 rounded-2xl font-semibold text-sm transition-all ${activeTab === 'upcoming'
+                ? 'bg-white text-[#390067] shadow-lg'
+                : 'bg-white/20 backdrop-blur-md border border-white/30 text-white'
+                }`}
               style={{ fontFamily: 'Poppins' }}
             >
               UPCOMING
             </button>
             <button
               onClick={() => handleTabChange('past')}
-              className={`flex-1 py-3 px-6 rounded-2xl font-semibold text-sm transition-all ${
-                activeTab === 'past'
-                  ? 'bg-white text-[#390067] shadow-lg'
-                  : 'bg-white/20 backdrop-blur-md border border-white/30 text-white'
-              }`}
+              className={`flex-1 py-3 px-6 rounded-2xl font-semibold text-sm transition-all ${activeTab === 'past'
+                ? 'bg-white text-[#390067] shadow-lg'
+                : 'bg-white/20 backdrop-blur-md border border-white/30 text-white'
+                }`}
               style={{ fontFamily: 'Poppins' }}
             >
               PAST
@@ -152,9 +180,8 @@ export default function TripsScreen({ session }: TripsScreenProps) {
           ) : activeTab === 'upcoming' ? (
             <div className="space-y-4 py-4">
               {bookings.map((booking, index) => {
-                const price = currency_pref === 'JMD'
-                  ? `J$${(booking.total_price_jmd / 100).toFixed(2)}`
-                  : `$${(booking.total_price_usd / 100).toFixed(2)} USD`;
+                // Always show USD
+                const price = `$${(booking.total_price_usd / 100).toFixed(2)} USD`;
 
                 return (
                   <motion.div
@@ -233,10 +260,13 @@ export default function TripsScreen({ session }: TripsScreenProps) {
                     </p>
                   </div>
                   <button
-                    onClick={() => haptics.light()}
-                    className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-[#390067] text-xs font-medium px-3 py-1.5 rounded-full shadow-lg hover:scale-105 transition-transform"
+                    onClick={() => {
+                      haptics.light();
+                      setRatingBooking(booking);
+                    }}
+                    className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-[#390067] text-xs font-bold px-3 py-1.5 rounded-full shadow-lg hover:scale-105 transition-transform flex items-center gap-1"
                   >
-                    Book Again
+                    <span>★</span> Rate
                   </button>
                 </motion.div>
               ))}
@@ -290,6 +320,22 @@ export default function TripsScreen({ session }: TripsScreenProps) {
               </div>
             </motion.div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {ratingBooking && (
+          <RatingScreen
+            bookingId={ratingBooking.id}
+            experienceTitle={ratingBooking.experiences.title}
+            experienceImage={ratingBooking.experiences.image_url}
+            onClose={() => setRatingBooking(null)}
+            onSubmit={(rating, comment) => {
+              console.log('Submitted rating:', rating, comment);
+              // TODO: Save to Supabase
+              setRatingBooking(null);
+            }}
+          />
         )}
       </AnimatePresence>
     </div>

@@ -1,33 +1,39 @@
-import { useState } from 'react';
-import { Home, MessageCircle, Ticket, Heart, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Home, MessageCircle, Ticket, Heart } from 'lucide-react';
 import DiscoveryFeed from './DiscoveryFeed';
 import ChatScreen from './ChatScreen';
 import TripsScreen from './TripsScreen';
 import SavedScreen from './SavedScreen';
 import ProfileScreen from './ProfileScreen';
 import ExperienceDetailPage from './ExperienceDetailPage';
-import GuestInfoScreen from './GuestInfoScreen';
-import PaymentMethodScreen from './PaymentMethodScreen';
-import CardPaymentScreen from './CardPaymentScreen';
-import BookingConfirmationScreen from './BookingConfirmationScreen';
+import BookingFlow from './BookingFlow';
 import { LOOKYAH_LOGOS, LOGO_SIZES } from '../lib/branding';
 import { useBooking } from '../contexts/BookingContext';
-import { supabase } from '../lib/supabase';
 
 interface MainLayoutProps {
   session: any;
   onLogout: () => void;
+  onNavigate?: (screen: any, params?: any) => void;
+  navigationParams?: any;
 }
 
 type Screen = 'discover' | 'chat' | 'trips' | 'saved' | 'profile' | 'settings';
-type BookingScreen = 'guest-info' | 'payment-method' | 'card-payment' | 'confirmation' | null;
 
-export default function MainLayout({ session, onLogout }: MainLayoutProps) {
-  const { bookingData, updateBookingData, resetBooking } = useBooking();
+export default function MainLayout({ session, onLogout, onNavigate, navigationParams }: MainLayoutProps) {
+  const { updateBookingData } = useBooking();
   const [activeScreen, setActiveScreen] = useState<Screen>('discover');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null);
-  const [bookingScreen, setBookingScreen] = useState<BookingScreen>(null);
+  const [selectedExperience, setSelectedExperience] = useState<any | null>(null);
+  const [isBookingFlowOpen, setIsBookingFlowOpen] = useState(false);
+
+  // Check for return params on mount
+  useEffect(() => {
+    if (navigationParams?.experience && !selectedExperience) {
+      setSelectedExperience(navigationParams.experience);
+      // If we were returning to book, we might want to auto-start booking or just show the detail page
+      // For now, let's just show the detail page
+    }
+  }, [navigationParams]);
 
   const navItems = [
     { id: 'discover' as Screen, icon: Home, label: 'Discover', customIcon: null },
@@ -45,6 +51,19 @@ export default function MainLayout({ session, onLogout }: MainLayoutProps) {
   };
 
   const handleStartBooking = (experienceData: any, date: string, guests: number, price: number) => {
+    if (!session) {
+      // Guest trying to book - redirect to auth
+      if (onNavigate) {
+        onNavigate('auth', {
+          returnTo: 'main',
+          experience: experienceData
+        });
+      } else {
+        alert('Please sign in to book this experience.');
+      }
+      return;
+    }
+
     const subtotal = price;
     const processingFee = Math.round(subtotal * 0.03 * 100) / 100;
     const discount = 0;
@@ -59,106 +78,25 @@ export default function MainLayout({ session, onLogout }: MainLayoutProps) {
       discount,
       totalPrice
     });
-    setBookingScreen('guest-info');
+    setIsBookingFlowOpen(true);
   };
 
-  const generateBookingReference = () => {
-    const prefix = 'LYH';
-    const timestamp = Date.now().toString(36).toUpperCase();
-    const random = Math.random().toString(36).substring(2, 6).toUpperCase();
-    return `${prefix}-${timestamp}-${random}`;
-  };
-
-  const handleConfirmBooking = async () => {
-    try {
-      updateBookingData({ status: 'processing' });
-      const bookingRef = generateBookingReference();
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      updateBookingData({
-        bookingReference: bookingRef,
-        status: 'confirmed'
-      });
-      setBookingScreen('confirmation');
-    } catch (error) {
-      console.error('Booking error:', error);
-      updateBookingData({ status: 'failed' });
-      alert('Booking failed. Please try again.');
-    }
-  };
-
-  const handlePaymentComplete = async (paymentData: any) => {
-    try {
-      updateBookingData({ status: 'processing' });
-      const bookingRef = generateBookingReference();
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      updateBookingData({
-        bookingReference: bookingRef,
-        status: 'confirmed'
-      });
-      setBookingScreen('confirmation');
-    } catch (error) {
-      console.error('Payment error:', error);
-      updateBookingData({ status: 'failed' });
-      alert('Payment failed. Please try again.');
-    }
-  };
-
-  if (bookingScreen === 'guest-info') {
+  if (isBookingFlowOpen) {
     return (
-      <GuestInfoScreen
-        onBack={() => {
-          setBookingScreen(null);
-          setSelectedExperienceId(bookingData.experience?.id || null);
-        }}
-        onContinue={() => setBookingScreen('payment-method')}
+      <BookingFlow
+        onClose={() => setIsBookingFlowOpen(false)}
+        onNavigate={onNavigate}
       />
     );
   }
 
-  if (bookingScreen === 'payment-method') {
-    return (
-      <PaymentMethodScreen
-        onBack={() => setBookingScreen('guest-info')}
-        onSelectPayment={(method) => {
-          updateBookingData({ paymentMethod: method });
-          if (method === 'cash') {
-            handleConfirmBooking();
-          } else {
-            setBookingScreen('card-payment');
-          }
-        }}
-      />
-    );
-  }
-
-  if (bookingScreen === 'card-payment') {
-    return (
-      <CardPaymentScreen
-        onBack={() => setBookingScreen('payment-method')}
-        onPaymentComplete={handlePaymentComplete}
-      />
-    );
-  }
-
-  if (bookingScreen === 'confirmation') {
-    return (
-      <BookingConfirmationScreen
-        onBackToHome={() => {
-          resetBooking();
-          setBookingScreen(null);
-          setSelectedExperienceId(null);
-          setActiveScreen('discover');
-        }}
-      />
-    );
-  }
-
-  if (selectedExperienceId) {
+  if (selectedExperience) {
     return (
       <div className="fixed inset-0 overflow-y-auto">
         <ExperienceDetailPage
-          experienceId={selectedExperienceId}
-          onBack={() => setSelectedExperienceId(null)}
+          experienceId={selectedExperience.id}
+          initialExperience={selectedExperience}
+          onBack={() => setSelectedExperience(null)}
           onBookingStart={handleStartBooking}
         />
       </div>
@@ -173,7 +111,7 @@ export default function MainLayout({ session, onLogout }: MainLayoutProps) {
           <DiscoveryFeed
             session={session}
             onBookingChange={setIsBookingOpen}
-            onExperienceSelect={setSelectedExperienceId}
+            onExperienceSelect={setSelectedExperience}
           />
         )}
         {activeScreen === 'chat' && <ChatScreen session={session} />}
@@ -240,15 +178,13 @@ export default function MainLayout({ session, onLogout }: MainLayoutProps) {
                       />
                     ) : (
                       <Icon
-                        className={`w-6 h-6 sm:w-7 sm:h-7 drop-shadow-lg ${
-                          isActive ? 'text-white' : 'text-white/70'
-                        }`}
+                        className={`w-6 h-6 sm:w-7 sm:h-7 drop-shadow-lg ${isActive ? 'text-white' : 'text-white/70'
+                          }`}
                         fill={isActive && item.id === 'discover' ? 'currentColor' : 'none'}
                       />
                     )}
-                    <span className={`text-[10px] sm:text-xs drop-shadow-md ${
-                      isActive ? 'text-white font-semibold' : 'text-white/70'
-                    }`}>
+                    <span className={`text-[10px] sm:text-xs drop-shadow-md ${isActive ? 'text-white font-semibold' : 'text-white/70'
+                      }`}>
                       {item.label}
                     </span>
                   </button>
@@ -267,25 +203,22 @@ export default function MainLayout({ session, onLogout }: MainLayoutProps) {
               <button
                 key={item.id}
                 onClick={() => setActiveScreen(item.id)}
-                className={`flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all ${
-                  isActive
-                    ? 'nav-active'
-                    : 'text-gray-400'
-                }`}
+                className={`flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all ${isActive
+                  ? 'nav-active'
+                  : 'text-gray-400'
+                  }`}
               >
                 {item.customIcon === 'avatar' ? (
                   <img
                     src={LOOKYAH_LOGOS.chatAvatar}
                     alt="JAHBOI"
-                    className={`${LOGO_SIZES.navIcon} rounded-full transition-all ${
-                      isActive ? 'ring-2 ring-[var(--accent-purple)] scale-110' : 'opacity-60'
-                    }`}
+                    className={`${LOGO_SIZES.navIcon} rounded-full transition-all ${isActive ? 'ring-2 ring-[var(--accent-purple)] scale-110' : 'opacity-60'
+                      }`}
                   />
                 ) : (
                   <Icon
-                    className={`w-6 h-6 transition-transform ${
-                      isActive ? 'text-[var(--accent-purple)] scale-110' : 'text-gray-400'
-                    }`}
+                    className={`w-6 h-6 transition-transform ${isActive ? 'text-[var(--accent-purple)] scale-110' : 'text-gray-400'
+                      }`}
                   />
                 )}
               </button>

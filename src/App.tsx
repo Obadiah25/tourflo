@@ -7,28 +7,28 @@ import OnboardingFlow from './components/OnboardingFlow';
 import AuthScreen from './components/AuthScreen';
 import MainLayout from './components/MainLayout';
 import OperatorDemo from './components/OperatorDemo';
+import LandingPage from './components/LandingPage';
 import { BookingProvider } from './contexts/BookingContext';
-import { supabase } from './lib/supabase';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-console.log('%c🌴 LOOKYAH JAMAICA 😎', 'font-size: 24px; font-weight: bold; color: #4A1A4A;');
+console.log('%c🌴 TOURFLO FLORIDA ☀️', 'font-size: 24px; font-weight: bold; color: #0077BE;');
 console.log('%cWelcome to the console! Watch the logs below to debug the app flow.', 'color: #666;');
 console.log('%c─────────────────────────────────────────────────────', 'color: #ddd;');
 
-type ScreenName = 'splash' | 'auth' | 'onboarding' | 'main' | 'operator';
+type ScreenName = 'splash' | 'landing' | 'auth' | 'onboarding' | 'main' | 'operator';
 
-function App() {
-  const [loading, setLoading] = useState(true);
-  const [session, setSession] = useState(null);
-  const [isGuestMode, setIsGuestMode] = useState(false);
+function AppContent() {
+  const { session, isGuestMode, loading, guestLogin, logout } = useAuth();
   const [devMode, setDevMode] = useState(true);
-  const [currentScreen, setCurrentScreen] = useState<ScreenName>('splash');
-  const [devScreen, setDevScreen] = useState<ScreenName>('splash');
+  const [currentScreen, setCurrentScreen] = useState<ScreenName>('landing');
+  const [devScreen, setDevScreen] = useState<ScreenName>('landing');
   const { isFirstVisit, hasCompletedOnboarding, markVisited } = useAppStore();
+  const [navigationParams, setNavigationParams] = useState<any>(null);
 
   useEffect(() => {
     console.log('═══════════════════════════════════════');
-    console.log('📱 LOOKYAH APP STATE:');
+    console.log('📱 TOURFLO APP STATE:');
     console.log('   Loading:', loading);
     console.log('   Has Session:', !!session);
     console.log('   Guest Mode:', isGuestMode);
@@ -37,7 +37,7 @@ function App() {
     console.log('═══════════════════════════════════════');
     if (!loading) {
       if (!session && !isGuestMode) {
-        console.log('🔐 SHOULD SHOW: Auth Screen');
+        console.log('🔐 SHOULD SHOW: Landing Page');
       } else if (!hasCompletedOnboarding && isFirstVisit) {
         console.log('👋 SHOULD SHOW: Onboarding Flow');
       } else {
@@ -50,48 +50,68 @@ function App() {
   useEffect(() => {
     registerServiceWorker();
 
-    const guestMode = localStorage.getItem('lookyah_guest_mode') === 'true';
-    setIsGuestMode(guestMode);
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session as any);
-      setLoading(false);
-
+    if (!loading) {
       if (session) {
-        if (hasCompletedOnboarding) {
-          setCurrentScreen('main');
+        const role = session.user.user_metadata?.role;
+        if (role === 'operator') {
+          setCurrentScreen('operator');
         } else {
-          setCurrentScreen('onboarding');
-        }
-      } else if (guestMode) {
-        if (hasCompletedOnboarding) {
+          // Tourists go to main app, onboarding is optional
           setCurrentScreen('main');
-        } else {
-          setCurrentScreen('onboarding');
         }
+      } else if (isGuestMode) {
+        // Guests go to main app
+        setCurrentScreen('main');
       } else {
-        setCurrentScreen('splash');
+        setCurrentScreen('landing');
       }
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session as any);
-    });
-
-    return () => subscription.unsubscribe();
-  }, [hasCompletedOnboarding]);
+    }
+  }, [loading, session, isGuestMode, hasCompletedOnboarding]);
 
   const handleSplashComplete = () => {
-    setCurrentScreen('auth');
+    setCurrentScreen('landing');
   };
 
-  const handleAuthComplete = () => {
-    if (hasCompletedOnboarding) {
+  const handleNavigate = (screen: ScreenName, params?: any) => {
+    if (params) {
+      setNavigationParams(params);
+    }
+
+    if (screen === 'main') {
+      guestLogin();
+    }
+
+    setCurrentScreen(screen);
+  };
+
+  const handleLandingNavigate = (screen: 'auth' | 'operator' | 'main') => {
+    if (screen === 'operator') {
+      if (devMode) {
+        setDevScreen('operator');
+      } else {
+        setCurrentScreen('operator');
+      }
+    } else if (screen === 'main') {
+      // Guest browsing mode
+      guestLogin();
       setCurrentScreen('main');
     } else {
-      setCurrentScreen('onboarding');
+      setCurrentScreen(screen);
+    }
+  };
+
+  const handleAuthComplete = (role?: 'tourist' | 'operator') => {
+    if (role === 'operator') {
+      setCurrentScreen('operator');
+    } else {
+      // Check for return path
+      if (navigationParams?.returnTo) {
+        setCurrentScreen(navigationParams.returnTo);
+        // Keep params if needed by the destination, or clear them if they were just for routing
+        // For now, we'll keep them in state so MainLayout can read them if needed
+      } else {
+        setCurrentScreen('main');
+      }
     }
   };
 
@@ -101,11 +121,8 @@ function App() {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    localStorage.removeItem('lookyah_guest_mode');
-    setSession(null);
-    setIsGuestMode(false);
-    setCurrentScreen('auth');
+    await logout();
+    setCurrentScreen('landing');
   };
 
   useEffect(() => {
@@ -133,7 +150,7 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [devMode]);
 
-  const screens: ScreenName[] = ['splash', 'auth', 'onboarding', 'main', 'operator'];
+  const screens: ScreenName[] = ['splash', 'landing', 'auth', 'onboarding', 'main', 'operator'];
   const currentScreenIndex = screens.indexOf(devScreen);
 
   const goToNextScreen = () => {
@@ -169,13 +186,19 @@ function App() {
           <ChevronRight className="w-8 h-8 text-gray-900" />
         </button>
 
-        {devScreen === 'splash' && <SplashScreen onComplete={() => setDevScreen('auth')} />}
-        {devScreen === 'auth' && <AuthScreen onAuth={() => setDevScreen('onboarding')} />}
+        {devScreen === 'splash' && <SplashScreen onComplete={() => setDevScreen('landing')} />}
+        {devScreen === 'landing' && <LandingPage onNavigate={(screen) => setDevScreen(screen)} />}
+        {devScreen === 'auth' && <AuthScreen onAuth={(role) => setDevScreen(role === 'operator' ? 'operator' : 'onboarding')} />}
         {devScreen === 'onboarding' && <OnboardingFlow onComplete={() => setDevScreen('main')} />}
         {devScreen === 'main' && (
           <BookingProvider>
             <PWABanner />
-            <MainLayout session={session} onLogout={handleLogout} />
+            <MainLayout
+              session={session}
+              onLogout={handleLogout}
+              onNavigate={handleNavigate}
+              navigationParams={navigationParams}
+            />
           </BookingProvider>
         )}
         {devScreen === 'operator' && <OperatorDemo />}
@@ -188,6 +211,11 @@ function App() {
     return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
+  if (currentScreen === 'landing') {
+    console.log('🎬 RENDERING → LandingPage');
+    return <LandingPage onNavigate={handleLandingNavigate} />;
+  }
+
   if (currentScreen === 'auth') {
     console.log('🎬 RENDERING → AuthScreen');
     return <AuthScreen onAuth={handleAuthComplete} />;
@@ -198,12 +226,30 @@ function App() {
     return <OnboardingFlow onComplete={handleOnboardingComplete} />;
   }
 
+  if (currentScreen === 'operator') {
+    console.log('🎬 RENDERING → OperatorDemo');
+    return <OperatorDemo />;
+  }
+
   console.log('🎬 RENDERING → MainLayout (includes DiscoveryFeed)');
   return (
     <BookingProvider>
       <PWABanner />
-      <MainLayout session={session} onLogout={handleLogout} />
+      <MainLayout
+        session={session}
+        onLogout={handleLogout}
+        onNavigate={handleNavigate}
+        navigationParams={navigationParams}
+      />
     </BookingProvider>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

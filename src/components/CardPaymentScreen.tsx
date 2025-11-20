@@ -115,11 +115,11 @@ export default function CardPaymentScreen({ onBack, onPaymentComplete }: CardPay
           <div className="relative z-10">
             <div className="flex justify-between items-start mb-5">
               <svg className="w-7 h-7 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                <rect width="24" height="18" y="3" rx="3" fill="currentColor" opacity="0.3"/>
-                <rect width="24" height="4" y="9" fill="currentColor"/>
+                <rect width="24" height="18" y="3" rx="3" fill="currentColor" opacity="0.3" />
+                <rect width="24" height="4" y="9" fill="currentColor" />
               </svg>
               <div className="text-white/60 text-[9px]">
-                LOOKYAH CARD
+                TOURFLO CARD
               </div>
             </div>
 
@@ -260,11 +260,10 @@ export default function CardPaymentScreen({ onBack, onPaymentComplete }: CardPay
         <button
           onClick={handleProcessPayment}
           disabled={!isCardFormValid || isProcessing}
-          className={`w-full font-bold text-base py-3 rounded-xl shadow-lg transition-all ${
-            isCardFormValid && !isProcessing
+          className={`w-full font-bold text-base py-3 rounded-xl shadow-lg transition-all ${isCardFormValid && !isProcessing
               ? 'bg-gradient-to-r from-[#390067] to-[#4D0085] text-white hover:shadow-[#390067]/50 active:scale-98'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
+            }`}
           style={{ fontFamily: 'Poppins' }}
         >
           {isProcessing ? (

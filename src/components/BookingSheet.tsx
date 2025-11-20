@@ -30,11 +30,9 @@ export default function BookingSheet({ experience, session, onClose }: BookingSh
   const spotsLeft = currentCapacity.max - currentCapacity.current;
   const isFull = spotsLeft <= 0;
 
-  const totalJMD = experience.price_jmd * groupSize;
+  // Always use USD
   const totalUSD = experience.price_usd * groupSize;
-  const displayPrice = currency_pref === 'JMD'
-    ? `J$${(totalJMD / 100).toFixed(2)}`
-    : `$${(totalUSD / 100).toFixed(2)} USD`;
+  const displayPrice = `$${(totalUSD / 100).toFixed(2)} USD`;
 
   const handleBook = async () => {
     if (!session) {
@@ -49,7 +47,7 @@ export default function BookingSheet({ experience, session, onClose }: BookingSh
       bookingDate.setDate(bookingDate.getDate() + 1);
     }
 
-    const qrData = `LOOKYAH-${Date.now()}-${experience.id}`;
+    const qrData = `TOURFLO-${Date.now()}-${experience.id}`;
 
     const { data, error } = await supabase.from('bookings').insert({
       user_id: session.user.id,
@@ -57,7 +55,6 @@ export default function BookingSheet({ experience, session, onClose }: BookingSh
       booking_date: bookingDate.toISOString().split('T')[0],
       booking_time: selectedTime,
       group_size: groupSize,
-      total_price_jmd: totalJMD,
       total_price_usd: totalUSD,
       payment_method: 'pay_at_location',
       payment_status: 'pending',
@@ -113,11 +110,10 @@ export default function BookingSheet({ experience, session, onClose }: BookingSh
                       <button
                         key={day}
                         onClick={() => setSelectedDay(day)}
-                        className={`flex-1 py-3 rounded-xl font-medium transition-all ${
-                          selectedDay === day
-                            ? 'bg-gradient-to-r from-[#d8e4fa] to-[#eecc8f] text-gray-900'
-                            : 'bg-gray-100 text-gray-600'
-                        }`}
+                        className={`flex-1 py-3 rounded-xl font-medium transition-all ${selectedDay === day
+                          ? 'bg-gradient-to-r from-[#d8e4fa] to-[#eecc8f] text-gray-900'
+                          : 'bg-gray-100 text-gray-600'
+                          }`}
                       >
                         {day.charAt(0).toUpperCase() + day.slice(1)}
                       </button>
@@ -142,13 +138,12 @@ export default function BookingSheet({ experience, session, onClose }: BookingSh
                             setSelectedTime(time);
                             setIsWaitlist(false);
                           }}
-                          className={`py-2 rounded-lg font-medium transition-all relative ${
-                            selectedTime === time
-                              ? 'time-slot-selected'
-                              : isSlotFull
+                          className={`py-2 rounded-lg font-medium transition-all relative ${selectedTime === time
+                            ? 'time-slot-selected'
+                            : isSlotFull
                               ? 'bg-red-100 text-red-700'
                               : 'bg-gray-100 text-gray-600'
-                          }`}
+                            }`}
                         >
                           <div>{time}</div>
                           {!isSlotFull && isLowCapacity && (
